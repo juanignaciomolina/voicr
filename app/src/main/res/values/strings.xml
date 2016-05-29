@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- General -->
+    <string name="general_app_name">Voicr</string>
+
+    <!-- Login -->
+    <string name="login_button">Get started</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_error_invalid_email">Must be a valid email</string>
+    <string name="login_error_invalid_password">Must be at least 8 characters long</string>
+    <string name="login_loading">Loading…</string>
+    <string name="login_message_successful">Ready to start!</string>
+    <string name="login_message_error">Ups, we couldn\'t connect to the servers. \n Try again later</string>
+
+</resources>

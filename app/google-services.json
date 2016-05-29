@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "963772653179",
+    "firebase_url": "https://voicr-stage.firebaseio.com",
+    "project_id": "voicr-stage",
+    "storage_bucket": "voicr-stage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963772653179:android:431fab6f2938ff19",
+        "android_client_info": {
+          "package_name": "com.droidko.voicr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963772653179-hs4mn5n7es7ihjvp2qnp1kk8ii9l5gsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClumeAyGn_2A_0q00ubEZNc85arV6iQCA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
