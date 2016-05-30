@@ -2,15 +2,22 @@
 
     <!-- General -->
     <string name="general_app_name">Voicr</string>
+    <string name="general_error_unknown">Ups, something went wrong</string>
+    <string name="general_error_network">No internet connection available</string>
 
-    <!-- Login -->
-    <string name="login_button">Get started</string>
-    <string name="login_email_hint">Email</string>
-    <string name="login_password_hint">Password</string>
-    <string name="login_error_invalid_email">Must be a valid email</string>
-    <string name="login_error_invalid_password">Must be at least 8 characters long</string>
-    <string name="login_loading">Loading…</string>
-    <string name="login_message_successful">Ready to start!</string>
-    <string name="login_message_error">Ups, we couldn\'t connect to the servers. \n Try again later</string>
+    <!-- Auth -->
+    <string name="auth_login">Log in</string>
+    <string name="auth_signup">Sign up</string>
+    <string name="auth_email_hint">Email</string>
+    <string name="auth_password_hint">Password</string>
+    <string name="auth_confirm_password_hint">Password</string>
+    <string name="auth_error_invalid_email">Must be a valid email</string>
+    <string name="auth_error_invalid_password">Must be at least 8 characters long</string>
+    <string name="auth_error_passwords_dont_match">Passwords don\'t match</string>
+    <string name="auth_error_invalid_credentials">Wrong username or password</string>
+    <string name="auth_error_email_taken">Email already registered</string>
+    <string name="auth_loading">Loading…</string>
+    <string name="auth_message_successful">Ready to start!</string>
+    <string name="auth_message_error">Ups, we couldn\'t connect to the servers. \n Try again later</string>
 
 </resources>

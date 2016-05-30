@@ -18,30 +18,49 @@
         android:id="@+id/vEmailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/login_email_hint"
+        android:hint="@string/auth_email_hint"
         android:inputType="textEmailAddress"/>
 
     <EditText
         android:id="@+id/vPasswordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/login_password_hint"
+        android:hint="@string/auth_password_hint"
         android:inputType="textPassword"/>
 
     <EditText
         android:id="@+id/vConfirmPasswordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/login_password_hint"
+        android:hint="@string/auth_confirm_password_hint"
         android:inputType="textPassword"/>
 
-    <Button
-        android:id="@+id/vStartButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/spacing_big"
-        android:padding="@dimen/spacing_medium_extra"
-        android:text="@string/login_button"/>
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/vLoginButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/spacing_big"
+            android:padding="@dimen/spacing_medium_extra"
+            android:text="@string/auth_login"/>
+
+        <Button
+            android:id="@+id/vSignUpButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/spacing_big"
+            android:padding="@dimen/spacing_medium_extra"
+            android:text="@string/auth_signup"/>
+
+    </LinearLayout>
 
 </LinearLayout>

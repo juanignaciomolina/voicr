@@ -1,12 +1,12 @@
-package com.droidko.voicr.views.login
+package com.droidko.voicr.views.auth
 
 import android.support.v4.app.Fragment
 import com.droidko.voicr.views.BaseActivity
 
-class LoginActivity : BaseActivity() {
+class AuthActivity : BaseActivity() {
 
     override fun onFragmentRequested(): Fragment {
-        return LoginFragment()
+        return AuthFragment()
     }
 
 }
