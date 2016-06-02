@@ -10,7 +10,7 @@
     <string name="auth_signup">Sign up</string>
     <string name="auth_email_hint">Email</string>
     <string name="auth_password_hint">Password</string>
-    <string name="auth_confirm_password_hint">Password</string>
+    <string name="auth_confirm_password_hint">Confirm password</string>
     <string name="auth_error_invalid_email">Must be a valid email</string>
     <string name="auth_error_invalid_password">Must be at least 8 characters long</string>
     <string name="auth_error_passwords_dont_match">Passwords don\'t match</string>

@@ -4,8 +4,10 @@ import android.view.View
 import com.droidko.voicr.R
 import com.droidko.voicr.presenters.auth.AuthPresenter
 import com.droidko.voicr.views.BaseFragment
+import com.droidko.voicr.views.home.HomeActivity
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.fragment_login.*
+import org.jetbrains.anko.startActivity
 
 class AuthFragment : BaseFragment(), iAuthView {
 
@@ -46,7 +48,10 @@ class AuthFragment : BaseFragment(), iAuthView {
         handleError(error)
     }
 
-    fun greetUser(email: String) = toast("Welcome $email")
+    fun greetUser(email: String) {
+        toast("Welcome $email")
+        context.startActivity<HomeActivity>()
+    }
 
     fun handleError(error: iAuthView.AuthError) {
         // Clear views
