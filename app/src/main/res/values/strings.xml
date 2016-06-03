@@ -14,8 +14,9 @@
     <string name="auth_error_invalid_email">Must be a valid email</string>
     <string name="auth_error_invalid_password">Must be at least 8 characters long</string>
     <string name="auth_error_passwords_dont_match">Passwords don\'t match</string>
-    <string name="auth_error_invalid_credentials">Wrong username or password</string>
+    <string name="auth_error_invalid_credentials">Wrong email or password</string>
     <string name="auth_error_email_taken">Email already registered</string>
+    <string name="auth_error_email_not_registered">Wrong email</string>
     <string name="auth_loading">Loading…</string>
     <string name="auth_message_successful">Ready to start!</string>
     <string name="auth_message_error">Ups, we couldn\'t connect to the servers. \n Try again later</string>

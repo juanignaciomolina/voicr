@@ -6,4 +6,7 @@ interface iHomePresenter: iMvpPresenter {
 
     fun sendMessage(message: String)
 
+    fun startListeningForMessages()
+
+    fun stopListeningForMessages()
 }

@@ -3,7 +3,11 @@ package com.droidko.voicr.presenters.home
 import com.droidko.voicr.model.Message
 import com.droidko.voicr.views.home.iHomeView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import org.jetbrains.anko.error
 import org.jetbrains.anko.info
 
 
@@ -11,17 +15,47 @@ class HomePresenter(val homeView: iHomeView): iHomePresenter {
 
     val databaseRef = FirebaseDatabase.getInstance().reference
     val loggedUser = FirebaseAuth.getInstance().currentUser
+    val messagesChangeListener = object: ChildEventListener{
+        override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+            // Do nothing...
+        }
+
+        override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+            // Do nothing...
+        }
+
+        override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+            homeView.onMessageArrive(snapshot.getValue(Message::class.java))
+        }
+
+        override fun onChildRemoved(snapshot: DataSnapshot) {
+            // Do nothing...
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            error { "An error occurred when listening for new messages: ${error.message}" }
+        }
+
+    }
 
     override fun sendMessage(message: String) {
 
         if (message.isEmpty()) return
 
         databaseRef
-                .child("/posts/user/${loggedUser!!.uid}/")
+                .child("/posts/")
                 .push()
                 .setValue(Message(message))
                 .addOnSuccessListener { info { "Message $message added" } }
                 .addOnFailureListener { exception -> error{ "An error occurred: $exception" } }
+    }
+
+    override fun startListeningForMessages() {
+        databaseRef.child("/posts/").addChildEventListener(messagesChangeListener)
+    }
+
+    override fun stopListeningForMessages() {
+        databaseRef.child("/posts/").removeEventListener(messagesChangeListener)
     }
 
 }

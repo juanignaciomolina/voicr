@@ -3,6 +3,7 @@ package com.droidko.voicr.presenters.auth
 import com.droidko.voicr.views.auth.iAuthView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import org.jetbrains.anko.error
 
@@ -45,6 +46,7 @@ class AuthPresenter(val authView: iAuthView) : iAuthPresenter {
     fun handleLoginFirebaseError(exception: Exception) {
         when(exception) {
             is FirebaseAuthInvalidCredentialsException -> authView.onLoginFailure(iAuthView.AuthError.SERVER_REJECTED_CREDENTIALS)
+            is FirebaseAuthInvalidUserException -> authView.onLoginFailure(iAuthView.AuthError.EMAIL_NOT_REGISTERED)
             else -> {
                 error { "A firebase error occurred in $exception" }
                 authView.onLoginFailure(iAuthView.AuthError.UNKNOWN)

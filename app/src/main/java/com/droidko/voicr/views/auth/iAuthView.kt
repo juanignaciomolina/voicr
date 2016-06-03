@@ -11,7 +11,8 @@ interface iAuthView : iMvpView {
         PASSWORD_TOO_SHORT, // Password is too short
         PASSWORDS_DONT_MATCH, // Password and confirmPassword do not match
         NETWORK, // Network error
-        EMAIL_TAKEN, // The selected username is already taken
+        EMAIL_TAKEN, // The selected email is already taken
+        EMAIL_NOT_REGISTERED, // The selected email is not registered in the system
         UNKNOWN // An unknown error
     }
 

@@ -68,6 +68,7 @@ class AuthFragment : BaseFragment(), iAuthView {
             iAuthView.AuthError.NETWORK -> toast(R.string.general_error_network)
             iAuthView.AuthError.UNKNOWN -> toast(R.string.general_error_unknown)
             iAuthView.AuthError.EMAIL_TAKEN -> toast(R.string.auth_error_email_taken)
+            iAuthView.AuthError.EMAIL_NOT_REGISTERED -> toast(R.string.auth_error_email_not_registered)
         }
     }
 
