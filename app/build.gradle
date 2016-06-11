@@ -43,15 +43,17 @@ dependencies {
 
     // Base dependencies
     compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.karumi:dexter:2.2.2' //Runtime permissions
 
     // Reactive dependencies
     compile 'io.reactivex:rxjava:1.1.5'
     compile 'io.reactivex:rxandroid:1.2.0'
 
     // Firebase dependencies
-    compile 'com.google.firebase:firebase-core:9.0.0'
-    compile 'com.google.firebase:firebase-database:9.0.0'
-    compile 'com.google.firebase:firebase-auth:9.0.0'
+    compile 'com.google.firebase:firebase-core:9.0.1'
+    compile 'com.google.firebase:firebase-database:9.0.1'
+    compile 'com.google.firebase:firebase-auth:9.0.1'
+    compile 'com.google.firebase:firebase-storage:9.0.1'
 
     // UI dependencies
     compile 'org.jetbrains.anko:anko-common:0.8.3'

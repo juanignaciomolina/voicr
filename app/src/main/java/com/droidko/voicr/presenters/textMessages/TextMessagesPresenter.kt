@@ -1,8 +1,7 @@
-package com.droidko.voicr.presenters.home
+package com.droidko.voicr.presenters.textMessages
 
 import com.droidko.voicr.model.Message
 import com.droidko.voicr.views.home.iHomeView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -11,10 +10,9 @@ import org.jetbrains.anko.error
 import org.jetbrains.anko.info
 
 
-class HomePresenter(val homeView: iHomeView): iHomePresenter {
+class TextMessagesPresenter(val homeView: iHomeView): iTextMessagesPresenter {
 
     val databaseRef = FirebaseDatabase.getInstance().reference
-    val loggedUser = FirebaseAuth.getInstance().currentUser
     val messagesChangeListener = object: ChildEventListener{
         override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
             // Do nothing...
