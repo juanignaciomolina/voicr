@@ -1,4 +1,4 @@
-package com.droidko.voicr.producers.audio
+package com.droidko.voicr.producers.audioPost.record
 
 import android.net.Uri
 import android.util.Log
@@ -14,15 +14,18 @@ class AudioPostUploadService: FileUploadService() {
     val database = FirebaseDatabase.getInstance()
     val cid = "myChannel"
     val uid = FirebaseAuth.getInstance().currentUser!!.uid
-    val pid = database.getReference("/channel-posts/$cid/").push().key
 
     override fun getStoragePath(): StorageReference = storageRef.child("/user-storage/$uid/audios/")
 
     override fun onFileUploadCompleted(startId: Int, downloadURL: Uri) {
         makeAudioPost(downloadURL)
+
+        super.onFileUploadCompleted(startId, downloadURL) //Remeber to call this for service cleanup
     }
 
     private fun makeAudioPost(audioUrl: Uri) {
+
+        val pid = getNewPostId()
         val audioPost = AudioPost(audioUrl.toString())
 
         // Prepare an atomic multi-reference update
@@ -32,7 +35,11 @@ class AudioPostUploadService: FileUploadService() {
 
         database.reference
                 .updateChildren(updates)
-                .addOnSuccessListener { Log.i(TAG, "AudioPost uploaded: $pid") }
+                .addOnSuccessListener { Log.i(TAG, "AudioPost uploaded with id: $pid") }
                 .addOnFailureListener { exception -> Log.e(TAG, "Failure: $exception")}
+    }
+
+    private fun getNewPostId() : String {
+        return database.getReference("/channel-posts/$cid/").push().key
     }
 }

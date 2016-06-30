@@ -35,19 +35,19 @@
             android:name=".consumers.auth.AuthActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:noHistory="true">
-        </activity>
+            android:noHistory="true"/>
 
         <!-- Home -->
         <activity
             android:name=".consumers.home.HomeActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
 
         <!-- AudioRecord upload service -->
-        <service android:name=".producers.audio.AudioPostUploadService" />
+        <service
+            android:name=".producers.audioPost.record.AudioPostUploadService"
+            android:exported="false"/>
 
-    </application>
+</application>
 
 </manifest>

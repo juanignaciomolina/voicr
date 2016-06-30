@@ -22,12 +22,6 @@ abstract class FileUploadService : Service() {
     val storageRef = storage.getReferenceFromUrl("gs://voicr-stage.appspot.com")
 
     //region Service lifecycle
-    override fun onCreate() {
-        super.onCreate()
-
-        Log.e(TAG, "HOLIS!")
-    }
-
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
         if (intent != null && intent.hasExtra(EXTRA_FILE_PATH)) {

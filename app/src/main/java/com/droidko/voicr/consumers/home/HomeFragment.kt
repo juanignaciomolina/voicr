@@ -1,26 +1,28 @@
 package com.droidko.voicr.consumers.home
 
+import android.media.AudioManager
 import android.media.MediaPlayer
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
+import com.bumptech.glide.Glide
 import com.droidko.voicr.R
 import com.droidko.voicr.consumers.BaseFragment
-import com.droidko.voicr.model.Message
-import com.droidko.voicr.producers.audio.AudioRecordProducer
-import com.droidko.voicr.producers.audio.iAudioRecordOutput
-import com.droidko.voicr.producers.textMessages.TextMessagesProducer
-import com.droidko.voicr.producers.textMessages.iTextMessagesOutput
+import com.droidko.voicr.model.AudioPost
+import com.droidko.voicr.producers.audioPost.receiver.AudioPostReceiverProducer
+import com.droidko.voicr.producers.audioPost.receiver.iAudioPostReceiverOutput
+import com.droidko.voicr.producers.audioPost.record.AudioPostPostRecordProducer
+import com.droidko.voicr.producers.audioPost.record.iAudioPostRecordOutput
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.error
 import java.io.IOException
 
-class HomeFragment: BaseFragment(), iTextMessagesOutput, iAudioRecordOutput {
+class HomeFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceiverOutput {
 
     var mediaPlayer: MediaPlayer? = null
 
-    val textMessagesPresenter by lazy { TextMessagesProducer(this) }
-    val audioRecordPresenter by lazy { AudioRecordProducer(this) }
+    val audioRecordProducer by lazy { AudioPostPostRecordProducer(this) }
+    val audioReceiverProducer by lazy { AudioPostReceiverProducer(this) }
 
     //region Lifecycle
     override fun onLayoutRequested(): Int {
@@ -28,22 +30,15 @@ class HomeFragment: BaseFragment(), iTextMessagesOutput, iAudioRecordOutput {
     }
 
     override fun onPopulateUi(rootView: View) {
-        vSendMessageButton.setOnClickListener {
-            textMessagesPresenter.sendMessage(vNewMessageEditText.text.toString())
-
-            vNewMessageEditText.text.clear()
-            toast("Sending message...")
-        }
-        
         vSendAudioButton.setOnTouchListener { view, motionEvent ->
             when(motionEvent.action) {
                         MotionEvent.ACTION_DOWN -> {
-                            audioRecordPresenter.startRecording()
+                            audioRecordProducer.startRecording()
                             (view as Button).text = "Recording"
                             return@setOnTouchListener true
                         }
                         MotionEvent.ACTION_UP -> {
-                            audioRecordPresenter.stopRecording()
+                            audioRecordProducer.stopRecording()
                             (view as Button).text = "Audio"
                             return@setOnTouchListener true
                         }
@@ -52,37 +47,34 @@ class HomeFragment: BaseFragment(), iTextMessagesOutput, iAudioRecordOutput {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        textMessagesPresenter.startListeningForMessages()
+    override fun onStart() {
+        super.onStart()
+        // Attention: For some reason, onResume() was being called multiple times, causing duplicated
+        // listeners. This may be related to the library being used for runtime-permissions, since
+        // it uses a separate Activity for handling results
+        audioReceiverProducer.subsribeToChannel("myChannel")         // TODO UNHARDCODE THIS
     }
 
-    override fun onPause() {
-        textMessagesPresenter.stopListeningForMessages()
-        super.onPause()
-    }
-    //endregion
-
-    //region Text messages
-    override fun onMessageArrive(message: Message) {
-        vMessageViewer.text = message.message
-        vUsernameViewer.text = message.userEmail
+    override fun onStop() {
+        audioReceiverProducer.unsubscribeFromChannel("myChannel")
+        super.onStop()
     }
     //endregion
 
-    //region Audio recording
+    //region AudioPosts
     override fun onRecordFailure() {
         toast(R.string.general_error_unknown)
     }
 
     override fun onRecordSuccessful(pathToAudioRecord: String) {
-        toast("Playing audio")
-        playAudio(pathToAudioRecord)
+        //toast("Playing audio")
+        //playAudio(pathToAudioRecord)
     }
 
     fun playAudio(pathToAudioRecord: String) {
         mediaPlayer = MediaPlayer()
         try {
+            mediaPlayer?.setAudioStreamType(AudioManager.STREAM_MUSIC)
             mediaPlayer?.setDataSource(pathToAudioRecord);
             mediaPlayer?.prepare();
             mediaPlayer?.start();
@@ -105,6 +97,18 @@ class HomeFragment: BaseFragment(), iTextMessagesOutput, iAudioRecordOutput {
     fun freeMediaPlayer() {
         mediaPlayer?.release()
         mediaPlayer = null
+    }
+
+    override fun onAudioPostReceived(post: AudioPost, new: Boolean) {
+        if (new) {
+            vPlayingUserUsername.text = post.uid
+            // TODO UNHARDCODE THIS
+            Glide
+                    .with(this)
+                    .load("https://lh5.googleusercontent.com/-QwLSi4cZPFw/AAAAAAAAAAI/AAAAAAAAwV8/B8TOXlKWf_Q/s0-c-k-no-ns/photo.jpg")
+                    .into(vPlayingUserAvatar)
+            playAudio(post.downloadUrl)
+        }
     }
     //endregion
 }

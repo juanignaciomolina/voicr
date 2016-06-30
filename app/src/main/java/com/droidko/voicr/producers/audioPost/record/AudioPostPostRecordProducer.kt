@@ -1,4 +1,4 @@
-package com.droidko.voicr.producers.audio
+package com.droidko.voicr.producers.audioPost.record
 
 import android.Manifest
 import android.content.Intent
@@ -12,7 +12,7 @@ import com.karumi.dexter.listener.multi.EmptyMultiplePermissionsListener
 import org.jetbrains.anko.error
 import java.util.*
 
-class AudioRecordProducer(val view: iAudioRecordOutput?): iAudioRecordInput {
+class AudioPostPostRecordProducer(val view: iAudioPostRecordOutput?): iAudioPostRecordInput {
 
     var recorder: MediaRecorder? = null
     var isRecording: Boolean = false
@@ -86,7 +86,7 @@ class AudioRecordProducer(val view: iAudioRecordOutput?): iAudioRecordInput {
 
     fun uploadAudioRecord() {
         // Deliver the recorded audio to the service in charge of uploading it
-        val intent = Intent(VoicrApplication.instance, AudioPostUploadService::class.java)
+        val intent = Intent(VoicrApplication.Companion.instance, AudioPostUploadService::class.java)
         intent.putExtra(FileUploadService.EXTRA_FILE_PATH, pathToRecordedAudio)
         VoicrApplication.instance.startService(intent)
     }
