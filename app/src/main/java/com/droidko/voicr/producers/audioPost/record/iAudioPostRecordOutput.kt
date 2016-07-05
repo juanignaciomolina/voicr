@@ -1,8 +1,8 @@
 package com.droidko.voicr.producers.audioPost.record
 
-import com.droidko.voicr.mcp.iMcpConsumer
+import com.droidko.voicr.mcp.iMcpOutput
 
-interface iAudioPostRecordOutput : iMcpConsumer {
+interface iAudioPostRecordOutput : iMcpOutput {
 
     fun onRecordFailure()
 

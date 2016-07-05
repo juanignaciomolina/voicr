@@ -6,7 +6,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import org.jetbrains.anko.error
 
-class AuthProducer(val authView: iAuthOutput) : iAuthInput {
+class AuthProducer(val authOutput: iAuthOutput): iAuthInput {
 
     // Constants
     companion object {
@@ -23,12 +23,12 @@ class AuthProducer(val authView: iAuthOutput) : iAuthInput {
 
     fun validateLoginInput(email: String, password: String): Boolean {
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            authView.onLoginFailure(iAuthOutput.AuthError.INVALID_EMAIL)
+            authOutput.onLoginFailure(iAuthOutput.AuthError.INVALID_EMAIL)
             return false
         }
 
         if (password.length < MIN_PASSWORD_LENGTH) {
-            authView.onLoginFailure(iAuthOutput.AuthError.PASSWORD_TOO_SHORT)
+            authOutput.onLoginFailure(iAuthOutput.AuthError.PASSWORD_TOO_SHORT)
             return false
         }
 
@@ -38,17 +38,17 @@ class AuthProducer(val authView: iAuthOutput) : iAuthInput {
     fun requestFirebaseLogin(email: String, password: String) {
         firebaseAuth
                 .signInWithEmailAndPassword(email, password)
-                .addOnSuccessListener { authView.onLoginSuccessful(firebaseAuth.currentUser!!) }
+                .addOnSuccessListener { authOutput.onLoginSuccessful(firebaseAuth.currentUser!!) }
                 .addOnFailureListener { exception -> handleLoginFirebaseError(exception) }
     }
 
     fun handleLoginFirebaseError(exception: Exception) {
         when(exception) {
-            is FirebaseAuthInvalidCredentialsException -> authView.onLoginFailure(iAuthOutput.AuthError.SERVER_REJECTED_CREDENTIALS)
-            is FirebaseAuthInvalidUserException -> authView.onLoginFailure(iAuthOutput.AuthError.EMAIL_NOT_REGISTERED)
+            is FirebaseAuthInvalidCredentialsException -> authOutput.onLoginFailure(iAuthOutput.AuthError.SERVER_REJECTED_CREDENTIALS)
+            is FirebaseAuthInvalidUserException -> authOutput.onLoginFailure(iAuthOutput.AuthError.EMAIL_NOT_REGISTERED)
             else -> {
                 error { "A firebase error occurred in $exception" }
-                authView.onLoginFailure(iAuthOutput.AuthError.UNKNOWN)
+                authOutput.onLoginFailure(iAuthOutput.AuthError.UNKNOWN)
             }
         }
     }
@@ -62,17 +62,17 @@ class AuthProducer(val authView: iAuthOutput) : iAuthInput {
 
     fun validateSignUpInput(email: String, password: String, confirmPassword: String): Boolean {
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            authView.onSignUpFailure(iAuthOutput.AuthError.INVALID_EMAIL)
+            authOutput.onSignUpFailure(iAuthOutput.AuthError.INVALID_EMAIL)
             return false
         }
 
         if(password.length < MIN_PASSWORD_LENGTH) {
-            authView.onSignUpFailure(iAuthOutput.AuthError.PASSWORD_TOO_SHORT)
+            authOutput.onSignUpFailure(iAuthOutput.AuthError.PASSWORD_TOO_SHORT)
             return false
         }
 
         if (!password.equals(confirmPassword)) {
-            authView.onSignUpFailure(iAuthOutput.AuthError.PASSWORDS_DONT_MATCH)
+            authOutput.onSignUpFailure(iAuthOutput.AuthError.PASSWORDS_DONT_MATCH)
             return false
         }
 
@@ -82,16 +82,16 @@ class AuthProducer(val authView: iAuthOutput) : iAuthInput {
     fun requestFirebaseSignUp(email: String, password: String) {
         firebaseAuth
                 .createUserWithEmailAndPassword(email, password)
-                .addOnSuccessListener { authView.onSignUpSuccessful(firebaseAuth.currentUser!!) }
+                .addOnSuccessListener { authOutput.onSignUpSuccessful(firebaseAuth.currentUser!!) }
                 .addOnFailureListener { exception -> handleSignUpFirebaseError(exception) }
     }
 
     fun handleSignUpFirebaseError(exception: Exception) {
         when(exception) {
-            is FirebaseAuthUserCollisionException -> authView.onSignUpFailure(iAuthOutput.AuthError.EMAIL_TAKEN)
+            is FirebaseAuthUserCollisionException -> authOutput.onSignUpFailure(iAuthOutput.AuthError.EMAIL_TAKEN)
             else -> {
                 error { "A firebase error occurred in $exception" }
-                authView.onSignUpFailure(iAuthOutput.AuthError.UNKNOWN)
+                authOutput.onSignUpFailure(iAuthOutput.AuthError.UNKNOWN)
             }
         }
     }

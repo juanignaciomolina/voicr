@@ -1,8 +1,8 @@
 package com.droidko.voicr.producers.auth
 
-import com.droidko.voicr.mcp.iMcpProducer
+import com.droidko.voicr.mcp.iMcpInput
 
-interface iAuthInput : iMcpProducer {
+interface iAuthInput : iMcpInput {
 
     fun doSignUp(email: String, password: String, confirmPassword: String)
 

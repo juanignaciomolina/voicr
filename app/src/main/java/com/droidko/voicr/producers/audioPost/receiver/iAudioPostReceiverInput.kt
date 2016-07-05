@@ -1,8 +1,8 @@
 package com.droidko.voicr.producers.audioPost.receiver
 
-import com.droidko.voicr.mcp.iMcpProducer
+import com.droidko.voicr.mcp.iMcpInput
 
-interface iAudioPostReceiverInput: iMcpProducer {
+interface iAudioPostReceiverInput: iMcpInput {
 
     fun subsribeToChannel(channelId: String)
 

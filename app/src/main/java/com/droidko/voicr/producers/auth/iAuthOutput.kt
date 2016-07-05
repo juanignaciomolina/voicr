@@ -1,9 +1,9 @@
 package com.droidko.voicr.producers.auth
 
-import com.droidko.voicr.mcp.iMcpConsumer
+import com.droidko.voicr.mcp.iMcpOutput
 import com.google.firebase.auth.FirebaseUser
 
-interface iAuthOutput : iMcpConsumer {
+interface iAuthOutput : iMcpOutput {
 
     enum class AuthError {
         SERVER_REJECTED_CREDENTIALS, // Wrong username or password

@@ -1,8 +1,8 @@
 package com.droidko.voicr.producers.audioPost.record
 
-import com.droidko.voicr.mcp.iMcpProducer
+import com.droidko.voicr.mcp.iMcpInput
 
-interface iAudioPostRecordInput : iMcpProducer {
+interface iAudioPostRecordInput : iMcpInput {
 
     fun startRecording()
 
