@@ -8,6 +8,7 @@ import android.widget.Button
 import com.bumptech.glide.Glide
 import com.droidko.voicr.R
 import com.droidko.voicr.consumers.BaseFragment
+import com.droidko.voicr.consumers.newChannel.NewChannelActivity
 import com.droidko.voicr.model.AudioPost
 import com.droidko.voicr.producers.audioPost.receiver.AudioPostReceiverProducer
 import com.droidko.voicr.producers.audioPost.receiver.iAudioPostReceiverOutput
@@ -15,6 +16,7 @@ import com.droidko.voicr.producers.audioPost.record.AudioPostPostRecordProducer
 import com.droidko.voicr.producers.audioPost.record.iAudioPostRecordOutput
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.error
+import org.jetbrains.anko.startActivity
 import java.io.IOException
 
 class HomeFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceiverOutput {
@@ -30,6 +32,10 @@ class HomeFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceiverOu
     }
 
     override fun onPopulateUi(rootView: View) {
+        vNewChannelButton.setOnClickListener {
+            activity.startActivity<NewChannelActivity>()
+        }
+
         vSendAudioButton.setOnTouchListener { view, motionEvent ->
             when(motionEvent.action) {
                         MotionEvent.ACTION_DOWN -> {

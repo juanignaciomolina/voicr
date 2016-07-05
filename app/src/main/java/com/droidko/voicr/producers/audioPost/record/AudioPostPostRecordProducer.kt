@@ -39,9 +39,15 @@ class AudioPostPostRecordProducer(val view: iAudioPostRecordOutput?): iAudioPost
         if (isRecording) return
 
         async() {
+
+            // Set up an internal directory if it doesn't exist already
+            val pendingUploadsDir = File(VoicrApplication.instance.filesDir, "pending-uploads")
+            if (!pendingUploadsDir.exists()) pendingUploadsDir.mkdir()
+
             // Generate a unique name for the audio file
             val audioUniqueName = UUID.randomUUID().toString() + ".aac"
-            val audioFile = File("${VoicrApplication.instance.filesDir}/", audioUniqueName);
+            val audioFile = File("${VoicrApplication.instance.filesDir}/pending-uploads/", audioUniqueName);
+
             pathToRecordedAudio = audioFile.absolutePath
 
             recorder = MediaRecorder()

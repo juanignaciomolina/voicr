@@ -5,8 +5,6 @@
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
@@ -40,6 +38,12 @@
         <!-- Home -->
         <activity
             android:name=".consumers.home.HomeActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"/>
+
+        <!-- New Channel -->
+        <activity
+            android:name=".consumers.newChannel.NewChannelActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"/>
 

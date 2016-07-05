@@ -41,23 +41,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/vNewMessageEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
         <Button
-            android:id="@+id/vSendMessageButton"
+            android:id="@+id/vNewChannelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SEND"/>
+            android:text="New Channel"/>
 
         <Button
             android:id="@+id/vSendAudioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AUDIO"/>
+            android:text="Send Audio"/>
 
     </LinearLayout>
 

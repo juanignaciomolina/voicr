@@ -10,9 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe36b962-ddc7-4231-8d8c-5f07758c988d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/newChannel/NewChannelActivity.kt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/newChannel/NewChannelFragment.kt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_channel.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/home/HomeFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/home/HomeFragment.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/record/AudioPostPostRecordProducer.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/record/AudioPostPostRecordProducer.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
     </list>
     <ignored path="Voicr.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,33 +49,23 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/home/HomeFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding>
-                <element signature="e#42#769#0" expanded="true" />
-                <element signature="e#3248#3478#0" expanded="false" />
+                <element signature="e#42#874#0" expanded="true" />
+                <element signature="e#3468#3698#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AudioPost.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/model/AudioPost.kt">
+      <file leaf-file-name="fragment_new_channel.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_channel.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.41878173">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
-                <element signature="e#33#96#0" expanded="true" />
+                <element signature="e#510#529#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_home.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
           <provider editor-type-id="android-designer">
@@ -78,13 +73,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AudioPostPostRecordProducer.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/record/AudioPostPostRecordProducer.kt">
+      <file leaf-file-name="RouterActivity.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/RouterActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4295302">
-              <caret line="50" column="57" selection-start-line="50" selection-start-column="57" selection-end-line="50" selection-end-column="57" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
               <folding>
-                <element signature="e#54#504#0" expanded="true" />
+                <element signature="e#37#280#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,8 +92,8 @@
       <list>
         <option value="Class" />
         <option value="Kotlin Class" />
-        <option value="Kotlin File" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -2018,10 +2013,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/presenters/login/iLoginPresenter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/presenters/login/LoginPresenter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/views/login/iLoginView.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/views/login/iAuthView.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/presenters/auth/iAuthPresenter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" />
@@ -2060,15 +2051,19 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/AudioPostReceiverProducer.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/record/iAudioPostRecordOutput.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/receiver/iAudioPostReceiverInput.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/uploads/FileUploadService.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/VoicrApplication.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/receiver/iAudioPostReceiverOutput.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/receiver/AudioPostReceiverProducer.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/record/AudioPostUploadService.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/home/HomeFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/newChannel/NewChannelActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/record/AudioPostPostRecordProducer.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/newChannel/NewChannelFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/RouterActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/home/HomeFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_channel.xml" />
       </list>
     </option>
   </component>
@@ -2108,15 +2103,157 @@
               <option name="myItemId" value="Voicr" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
+              <option name="myItemId" value="Voicr" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Voicr" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Voicr" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Voicr" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voicr" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Voicr" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voicr" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="consumers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Voicr" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voicr" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="consumers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newChannel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Voicr" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voicr" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="consumers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Voicr" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2164,7 +2301,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="audio&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/producers/audioPost/record/AudioPostPostRecordProducer.kt&#10;homefra&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/consumers/home/HomeFragment.kt&#10;homef&#9;null&#9;null&#10;audioprod&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/producers/audioPost/receiver/AudioPostReceiverProducer.kt&#10;appl&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/VoicrApplication.kt&#10;uploadser&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/producers/uploads/FileUploadService.kt&#10;rout&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/consumers/RouterActivity.kt&#10;home&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/consumers/home/HomeFragment.kt&#10;gradle&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/build.gradle&#10;gra&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/build.gradle&#10;authprese&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;authfra&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/auth/AuthFragment.kt&#10;authvi&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/auth/iAuthView.kt&#10;audipre&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/audio/AudioRecordPresenter.kt&#10;homeview&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/home/iHomeView.kt&#10;homep&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/home/HomePresenter.kt&#10;authpre&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;authpr&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;ihomeview&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/home/iHomeView.kt&#10;gradl&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/build.gradle&#10;authp&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;prese&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;strings&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/values/strings.xml&#10;app&#9;RUN_CONFIGURATION&#9;app&#10;stri&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/values/strings.xml&#10;strin&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/values/strings.xml&#10;string&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/values/strings.xml&#10;presente&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;login&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/layout/fragment_login.xml&#10;iauth&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/auth/iAuthView.kt&#10;loginpre&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/login/LoginPresenter.kt&#10;fragmen&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/layout/fragment_login.xml&#10;loginfragm&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/login/LoginFragment.kt&#10;fragment&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/layout/fragment_login.xml&#10;basef&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/BaseFragment.kt&#10;loginfra&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/fragments/LoginFragment.kt&#10;base&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/activities/BaseActivity.kt&#10;bas&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/activities/BaseActivity.kt" />
+    <property name="SearchEverywhereHistoryKey" value="router&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/consumers/RouterActivity.kt&#10;auth&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/consumers/auth/AuthFragment.kt&#10;homefra&#9;null&#9;null&#10;audiore&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/producers/audioPost/record/AudioPostPostRecordProducer.kt&#10;audio&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/producers/audioPost/record/AudioPostPostRecordProducer.kt&#10;homef&#9;null&#9;null&#10;audioprod&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/producers/audioPost/receiver/AudioPostReceiverProducer.kt&#10;appl&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/VoicrApplication.kt&#10;uploadser&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/producers/uploads/FileUploadService.kt&#10;rout&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/consumers/RouterActivity.kt&#10;home&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/consumers/home/HomeFragment.kt&#10;gradle&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/build.gradle&#10;gra&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/build.gradle&#10;authprese&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;authfra&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/auth/AuthFragment.kt&#10;authvi&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/auth/iAuthView.kt&#10;audipre&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/audio/AudioRecordPresenter.kt&#10;homeview&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/home/iHomeView.kt&#10;homep&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/home/HomePresenter.kt&#10;authpre&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;authpr&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;ihomeview&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/home/iHomeView.kt&#10;gradl&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/build.gradle&#10;authp&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;prese&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;strings&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/values/strings.xml&#10;app&#9;RUN_CONFIGURATION&#9;app&#10;stri&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/values/strings.xml&#10;strin&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/values/strings.xml&#10;string&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/values/strings.xml&#10;presente&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/auth/AuthPresenter.kt&#10;login&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/layout/fragment_login.xml&#10;iauth&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/auth/iAuthView.kt&#10;loginpre&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/presenters/login/LoginPresenter.kt&#10;fragmen&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/layout/fragment_login.xml&#10;loginfragm&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/login/LoginFragment.kt&#10;fragment&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/res/layout/fragment_login.xml&#10;basef&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/BaseFragment.kt&#10;loginfra&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/fragments/LoginFragment.kt&#10;base&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/activities/BaseActivity.kt&#10;bas&#9;FILE&#9;file:///Users/Juani/Documents/Projects/voicr/app/src/main/java/com/droidko/voicr/views/activities/BaseActivity.kt" />
     <property name="device.picker.selection" value="0427e0d225239ce7" />
     <property name="FullScreen" value="true" />
     <property name="android.project.structure.last.selected" value="app" />
@@ -2182,9 +2319,9 @@
       <recent name="com.droidko.voicr.views" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/model" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/uploads" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/app/src/main/res/values" />
     </key>
@@ -2515,6 +2652,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.398017" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32719547" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2534,7 +2672,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -2586,37 +2723,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/model/AudioPost.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding>
-            <element signature="e#33#96#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/record/AudioPostPostRecordProducer.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#54#504#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_base.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2695,6 +2801,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19911504">
           <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2751,13 +2858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.anko/anko-common/0.8.3/45b69535504e2178d61cf45f6e5137bdb0f851cd/anko-common-0.8.3-sources.jar!/org/jetbrains/anko/Intents.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15486726">
-          <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_base.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.072">
@@ -2790,16 +2890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/home/HomeActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2739726">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding>
-            <element signature="e#42#128#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.2207792">
@@ -2826,13 +2916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/auth/AuthFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82300884">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/com/droidko/voicr/Manifest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11673152">
@@ -2851,13 +2934,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="83" selection-start-line="14" selection-start-column="83" selection-end-line="14" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/RouterActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48672566">
-          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -2912,18 +2988,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22982885">
-          <caret line="37" column="33" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/VoicrApplication.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.90604025">
           <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="e#27#142#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2932,7 +3003,7 @@
         <state vertical-scroll-proportion="1.2013422">
           <caret line="74" column="29" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
           <folding>
-            <element signature="e#45#375#0" expanded="true" />
+            <element signature="e#45#375#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2957,21 +3028,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/receiver/AudioPostReceiverProducer.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26845637">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#56#335#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2985,25 +3048,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/home/HomeFragment.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/home/HomeActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.13422818">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/newChannel/NewChannelActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26845637">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
           <folding>
-            <element signature="e#42#769#0" expanded="true" />
-            <element signature="e#3248#3478#0" expanded="false" />
+            <element signature="e#48#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28368795">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#427#453#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/producers/audioPost/record/AudioPostPostRecordProducer.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4295302">
-          <caret line="50" column="57" selection-start-line="50" selection-start-column="57" selection-end-line="50" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.6375839">
+          <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
           <folding>
             <element signature="e#54#504#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/newChannel/NewChannelFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33557048">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#48#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92385787">
+          <caret line="53" column="36" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/auth/AuthFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26845637">
+          <caret line="16" column="41" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.anko/anko-common/0.8.3/45b69535504e2178d61cf45f6e5137bdb0f851cd/anko-common-0.8.3-sources.jar!/org/jetbrains/anko/Intents.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23489933">
+          <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/RouterActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+          <folding>
+            <element signature="e#37#280#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/droidko/voicr/consumers/home/HomeFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <element signature="e#42#874#0" expanded="true" />
+            <element signature="e#3468#3698#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_channel.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41878173">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#510#529#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
   </component>
