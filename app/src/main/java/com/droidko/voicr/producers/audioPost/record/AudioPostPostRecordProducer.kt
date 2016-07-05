@@ -3,13 +3,14 @@ package com.droidko.voicr.producers.audioPost.record
 import android.Manifest
 import android.content.Intent
 import android.media.MediaRecorder
-import android.os.Environment
 import com.droidko.voicr.VoicrApplication
 import com.droidko.voicr.producers.uploads.FileUploadService
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.listener.multi.EmptyMultiplePermissionsListener
+import org.jetbrains.anko.async
 import org.jetbrains.anko.error
+import java.io.File
 import java.util.*
 
 class AudioPostPostRecordProducer(val view: iAudioPostRecordOutput?): iAudioPostRecordInput {
@@ -29,8 +30,7 @@ class AudioPostPostRecordProducer(val view: iAudioPostRecordOutput?): iAudioPost
                         }
                     }
                 },
-                Manifest.permission.RECORD_AUDIO,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                Manifest.permission.RECORD_AUDIO)
     }
 
     fun startMediaRecorder() {
@@ -38,24 +38,28 @@ class AudioPostPostRecordProducer(val view: iAudioPostRecordOutput?): iAudioPost
         // Check that the MediaRecorder is not recording, otherwise it will throw an exception
         if (isRecording) return
 
-        // Generate a unique name for the audio file
-        val audioUniqueName = UUID.randomUUID().toString() + ".mp4"
-        pathToRecordedAudio = Environment.getExternalStorageDirectory().absolutePath + "/$audioUniqueName"
+        async() {
+            // Generate a unique name for the audio file
+            val audioUniqueName = UUID.randomUUID().toString() + ".aac"
+            val audioFile = File("${VoicrApplication.instance.filesDir}/", audioUniqueName);
+            pathToRecordedAudio = audioFile.absolutePath
 
-        recorder = MediaRecorder()
-        try {
-            recorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
-            recorder?.setAudioSamplingRate(44100);
-            recorder?.setAudioEncodingBitRate(96000);
-            recorder?.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-            recorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-            recorder?.setOutputFile(pathToRecordedAudio)
-            recorder?.prepare()
-            recorder?.start()
-        } catch (e: Exception) {
-            view?.onRecordFailure()
-            error { "MediaRecorder failed on method prepare(). Exception: ${e.message}" }
-            freeMediaRecorder()
+            recorder = MediaRecorder()
+            try {
+                recorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
+                recorder?.setAudioSamplingRate(44100);
+                recorder?.setAudioEncodingBitRate(96000);
+                recorder?.setAudioChannels(1)
+                recorder?.setOutputFormat(MediaRecorder.OutputFormat.AAC_ADTS)
+                recorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+                recorder?.setOutputFile(pathToRecordedAudio)
+                recorder?.prepare()
+                recorder?.start()
+            } catch (e: Exception) {
+                view?.onRecordFailure()
+                error { "MediaRecorder failed on method prepare(). Exception: ${e.message}" }
+                freeMediaRecorder()
+            }
         }
 
         isRecording = true
