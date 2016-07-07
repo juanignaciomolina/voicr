@@ -17,7 +17,7 @@
 
         <!-- Routing -->
         <activity
-            android:name=".consumers.RouterActivity"
+            android:name=".views.RouterActivity"
             android:theme="@android:style/Theme.NoDisplay"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
@@ -30,26 +30,26 @@
 
         <!-- Login and Sign up -->
         <activity
-            android:name=".consumers.auth.AuthActivity"
+            android:name=".views.auth.AuthActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:noHistory="true"/>
 
         <!-- Home -->
         <activity
-            android:name=".consumers.home.HomeActivity"
+            android:name=".views.home.HomeActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"/>
 
         <!-- New Channel -->
         <activity
-            android:name=".consumers.newChannel.NewChannelActivity"
+            android:name=".views.newChannel.NewChannelActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"/>
 
         <!-- AudioRecord upload service -->
         <service
-            android:name=".producers.audioPost.record.AudioPostUploadService"
+            android:name=".presenters.audioPost.record.AudioPostUploadService"
             android:exported="false"/>
 
 </application>
