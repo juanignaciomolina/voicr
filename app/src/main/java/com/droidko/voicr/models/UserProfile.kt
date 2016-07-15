@@ -3,7 +3,7 @@ package com.droidko.voicr.models
 import java.util.*
 
 data class UserProfile(
-        val name: String,
+        val name: String = "",
         val avatarUrl: String = "",
         val subscriptions: ArrayList<String> = ArrayList(),
         val timestamp: Long = System.currentTimeMillis() / 1000L) {

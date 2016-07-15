@@ -2,11 +2,13 @@ package com.droidko.voicr.views.newChannel
 
 import android.view.View
 import com.droidko.voicr.R
+import com.droidko.voicr.presenters.newChannel.NewChannelPresenter
+import com.droidko.voicr.presenters.newChannel.iNewChannelOutput
 import com.droidko.voicr.views.BaseFragment
 import kotlinx.android.synthetic.main.fragment_new_channel.*
 import org.jetbrains.anko.toast
 
-class NewChannelFragment: BaseFragment() {
+class NewChannelFragment: BaseFragment(), iNewChannelOutput {
 
     val presenter by lazy { NewChannelPresenter(this) }
 

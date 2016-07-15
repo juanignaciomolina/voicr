@@ -1,7 +1,6 @@
 package com.droidko.voicr.presenters.auth
 
 import com.droidko.voicr.emvp.iEmvpOutput
-import com.google.firebase.auth.FirebaseUser
 
 interface iAuthOutput : iEmvpOutput {
 
@@ -15,13 +14,5 @@ interface iAuthOutput : iEmvpOutput {
         EMAIL_NOT_REGISTERED, // The selected email is not registered in the system
         UNKNOWN // An unknown error
     }
-
-    fun onSignUpSuccessful(user: FirebaseUser)
-
-    fun onSignUpFailure(error: AuthError)
-
-    fun onLoginSuccessful(user: FirebaseUser)
-
-    fun onLoginFailure(error: AuthError)
 
 }

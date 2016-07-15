@@ -2,17 +2,21 @@ package com.droidko.voicr.views.auth
 
 import android.view.View
 import com.droidko.voicr.R
-import com.droidko.voicr.presenters.auth.AuthPresenter
 import com.droidko.voicr.presenters.auth.iAuthOutput
+import com.droidko.voicr.presenters.auth.login.AuthLoginPresenter
+import com.droidko.voicr.presenters.auth.login.iAuthLoginOutput
+import com.droidko.voicr.presenters.auth.signup.AuthSignupPresenter
+import com.droidko.voicr.presenters.auth.signup.iAuthSignupOutput
 import com.droidko.voicr.views.BaseFragment
 import com.droidko.voicr.views.home.HomeActivity
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.jetbrains.anko.startActivity
 
-class AuthFragment : BaseFragment(), iAuthOutput {
+class AuthFragment : BaseFragment(), iAuthLoginOutput, iAuthSignupOutput {
 
-    val presenter by lazy { AuthPresenter(this) }
+    val loginPresenter by lazy { AuthLoginPresenter(this) }
+    val signupPresenter by lazy { AuthSignupPresenter(this) }
 
     override fun onLayoutRequested(): Int {
         return R.layout.fragment_login
@@ -20,13 +24,13 @@ class AuthFragment : BaseFragment(), iAuthOutput {
 
     override fun onSetListeners(rootView: View) {
         vLoginButton.setOnClickListener() {
-            presenter.doLogin(
+            loginPresenter.doLogin(
                     vEmailEditText.text.toString(),
                     vPasswordEditText.text.toString())
         }
 
         vSignUpButton.setOnClickListener() {
-            presenter.doSignUp(
+            signupPresenter.doSignUp(
                     vEmailEditText.text.toString(),
                     vPasswordEditText.text.toString(),
                     vConfirmPasswordEditText.text.toString())

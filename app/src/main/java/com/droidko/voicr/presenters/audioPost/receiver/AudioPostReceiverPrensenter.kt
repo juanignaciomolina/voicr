@@ -1,15 +1,14 @@
 package com.droidko.voicr.presenters.audioPost.receiver
 
+import com.droidko.voicr.emvp.iEmvpPresenter
 import com.droidko.voicr.models.AudioPost
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import org.jetbrains.anko.error
 
-class AudioPostReceiverPrensenter(val output: iAudioPostReceiverOutput): iAudioPostReceiverInput {
+class AudioPostReceiverPrensenter(val output: iAudioPostReceiverOutput): iEmvpPresenter, iAudioPostReceiverInput {
 
-    val channelsRef = FirebaseDatabase.getInstance().getReference("/channel-posts/")
     var subscriptionTimestamp = System.currentTimeMillis() / 1000L
     val channelChangeListener = object: ChildEventListener {
         override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
@@ -41,11 +40,11 @@ class AudioPostReceiverPrensenter(val output: iAudioPostReceiverOutput): iAudioP
 
     override fun subsribeToChannel(channelId: String) {
         updateSubscriptionTimestamp()
-        channelsRef.child(channelId).addChildEventListener(channelChangeListener)
+        dbAccess().channelPosts(channelId).addChildEventListener(channelChangeListener)
     }
 
     override fun unsubscribeFromChannel(channelId: String) {
-        channelsRef.child(channelId).removeEventListener(channelChangeListener)
+        dbAccess().channelPosts(channelId).removeEventListener(channelChangeListener)
     }
 
 }

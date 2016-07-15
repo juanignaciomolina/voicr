@@ -5,7 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.IBinder
 import android.util.Log
-import com.google.firebase.storage.FirebaseStorage
+import com.droidko.voicr.firebase.StorageAccess
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import org.jetbrains.anko.async
@@ -18,8 +18,7 @@ abstract class FileUploadService : Service() {
         val TAG = "UploadService"
     }
 
-    val storage = FirebaseStorage.getInstance()
-    val storageRef = storage.getReferenceFromUrl("gs://voicr-stage.appspot.com")
+    val storageAccess = StorageAccess()
 
     //region Service lifecycle
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {

@@ -2,6 +2,7 @@ package com.droidko.voicr.presenters.audioPost.record
 
 import android.net.Uri
 import android.util.Log
+import com.droidko.voicr.firebase.DbAccess
 import com.droidko.voicr.models.AudioPost
 import com.droidko.voicr.presenters.uploads.FileUploadService
 import com.google.firebase.auth.FirebaseAuth
@@ -12,10 +13,11 @@ import java.util.*
 class AudioPostUploadService: FileUploadService() {
 
     val database = FirebaseDatabase.getInstance()
-    val cid = "myChannel"
+    val dbAccess = DbAccess()
+    val cid = "myChannel" // TODO Allow posting in other channels
     val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
-    override fun getStoragePath(): StorageReference = storageRef.child("/userProfile-storage/$uid/audios/")
+    override fun getStoragePath(): StorageReference = storageAccess.userAudios()
 
     override fun onFileUploadCompleted(startId: Int, downloadURL: Uri) {
         makeAudioPost(downloadURL)
@@ -30,8 +32,8 @@ class AudioPostUploadService: FileUploadService() {
 
         // Prepare an atomic multi-reference update
         var updates: HashMap<String, Any> = HashMap()
-        updates.put("/channel-posts/$cid/$pid/", audioPost.toFbMap())
-        updates.put("/userProfile-posts/$uid/$pid/", audioPost.toFbMap())
+        updates.put("/${DbAccess.PATH_CHANNEL_POSTS}/$cid/$pid/", audioPost.toFbMap())
+        updates.put("/${DbAccess.PATH_USER_POSTS}/$uid/$pid/", audioPost.toFbMap())
 
         database.reference
                 .updateChildren(updates)
@@ -40,6 +42,6 @@ class AudioPostUploadService: FileUploadService() {
     }
 
     private fun getNewPostId() : String {
-        return database.getReference("/channel-posts/$cid/").push().key
+        return dbAccess.channelPosts(cid).push().key
     }
 }

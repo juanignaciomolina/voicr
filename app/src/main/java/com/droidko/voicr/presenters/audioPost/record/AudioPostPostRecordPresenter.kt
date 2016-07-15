@@ -13,7 +13,11 @@ import org.jetbrains.anko.error
 import java.io.File
 import java.util.*
 
-class AudioPostPostRecordPresenter(val view: iAudioPostRecordOutput?): iAudioPostRecordInput {
+class AudioPostPostRecordPresenter(val output: iAudioPostRecordOutput?): iAudioPostRecordInput {
+
+    val TEMPORARY_FILES_PATH = "pending-uploads"
+    val AUDIO_SAMPLING_RATE = 44100
+    val AUDIO_ENCODING_BITRATE = 96000
 
     var recorder: MediaRecorder? = null
     var isRecording: Boolean = false
@@ -41,20 +45,20 @@ class AudioPostPostRecordPresenter(val view: iAudioPostRecordOutput?): iAudioPos
         async() {
 
             // Set up an internal directory if it doesn't exist already
-            val pendingUploadsDir = File(VoicrApplication.instance.filesDir, "pending-uploads")
+            val pendingUploadsDir = File(VoicrApplication.instance.filesDir, "$TEMPORARY_FILES_PATH")
             if (!pendingUploadsDir.exists()) pendingUploadsDir.mkdir()
 
             // Generate a unique name for the audio file
             val audioUniqueName = UUID.randomUUID().toString() + ".aac"
-            val audioFile = File("${VoicrApplication.instance.filesDir}/pending-uploads/", audioUniqueName);
+            val audioFile = File("${VoicrApplication.instance.filesDir}/$TEMPORARY_FILES_PATH/", audioUniqueName);
 
             pathToRecordedAudio = audioFile.absolutePath
 
             recorder = MediaRecorder()
             try {
                 recorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
-                recorder?.setAudioSamplingRate(44100);
-                recorder?.setAudioEncodingBitRate(96000);
+                recorder?.setAudioSamplingRate(AUDIO_SAMPLING_RATE);
+                recorder?.setAudioEncodingBitRate(AUDIO_ENCODING_BITRATE);
                 recorder?.setAudioChannels(1)
                 recorder?.setOutputFormat(MediaRecorder.OutputFormat.AAC_ADTS)
                 recorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
@@ -62,7 +66,7 @@ class AudioPostPostRecordPresenter(val view: iAudioPostRecordOutput?): iAudioPos
                 recorder?.prepare()
                 recorder?.start()
             } catch (e: Exception) {
-                view?.onRecordFailure()
+                output?.onRecordFailure()
                 error { "MediaRecorder failed on method prepare(). Exception: ${e.message}" }
                 freeMediaRecorder()
             }
@@ -85,7 +89,7 @@ class AudioPostPostRecordPresenter(val view: iAudioPostRecordOutput?): iAudioPos
         }
 
         uploadAudioRecord()
-        view?.onRecordSuccessful(pathToRecordedAudio!!) // TODO careful with this cast
+        output?.onRecordSuccessful(pathToRecordedAudio!!) // Careful with this cast
     }
 
     fun freeMediaRecorder() {
