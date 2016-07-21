@@ -52,6 +52,11 @@
             android:name=".presenters.audioPost.record.AudioPostUploadService"
             android:exported="false"/>
 
+        <!-- AudioPosts receiver service -->
+        <service
+            android:name=".presenters.audioPost.receiver.AudioPostReceiverService"
+            android:exported="false"/>
+
 </application>
 
 </manifest>
