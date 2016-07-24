@@ -20,9 +20,10 @@ class AudioPostReceiverService: Service() {
         val TAG = "ReceiverService"
     }
 
-    val binder = LocalBinder()
+    val binder = AudioPostReceiverBinder()
     var mediaPlayer: MediaPlayer? = null
     var output: iAudioPostReceiverOutput? = null
+    var channelBeingReceived: String? = null
 
     //region Service lifecycle
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -34,6 +35,12 @@ class AudioPostReceiverService: Service() {
         // Use binding to communicate with presenters
         return binder
     }
+
+    override fun onDestroy() {
+        clearActiveListenings()
+        super.onDestroy()
+    }
+
     //endregion
 
     //region Database listening
@@ -71,11 +78,21 @@ class AudioPostReceiverService: Service() {
 
     fun startListeningToChannel(channelId: String) {
         updateSubscriptionTimestamp()
+        // If we were listening to a channel, stop receiving updates from it first
+        clearActiveListenings()
+        channelBeingReceived = channelId
         DbAccess().channelPosts(channelId).addChildEventListener(channelChangeListener)
     }
 
     fun stopListeningFromChannel(channelId: String) {
         DbAccess().channelPosts(channelId).removeEventListener(channelChangeListener)
+    }
+
+    fun clearActiveListenings() {
+        // If we were listening to a channel, stop receiving updates from it first
+        if (channelBeingReceived != null) {
+            stopListeningFromChannel(channelBeingReceived!!)
+        }
     }
     //endregion
 
@@ -110,12 +127,12 @@ class AudioPostReceiverService: Service() {
     //endregion
 
     //region IBinder
-    inner class LocalBinder : Binder() {
+    inner class AudioPostReceiverBinder : Binder() {
         val service: AudioPostReceiverService = this@AudioPostReceiverService
     }
     //endregion
 
-    //region Presenter outpu
+    //region Presenter output
     fun setPresenterOutput(output: iAudioPostReceiverOutput) {
         this.output = output
     }

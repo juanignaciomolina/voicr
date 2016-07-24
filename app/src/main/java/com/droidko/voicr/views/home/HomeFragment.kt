@@ -4,8 +4,8 @@ import android.media.MediaPlayer
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
-import com.bumptech.glide.Glide
 import com.droidko.voicr.R
+import com.droidko.voicr.extensions.loadUrl
 import com.droidko.voicr.models.AudioPost
 import com.droidko.voicr.presenters.audioPost.receiver.AudioPostReceiverPresenter
 import com.droidko.voicr.presenters.audioPost.receiver.iAudioPostReceiverOutput
@@ -14,6 +14,7 @@ import com.droidko.voicr.presenters.audioPost.record.iAudioPostRecordOutput
 import com.droidko.voicr.views.BaseFragment
 import com.droidko.voicr.views.newChannel.NewChannelActivity
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.jetbrains.anko.enabled
 import org.jetbrains.anko.startActivity
 
 class HomeFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceiverOutput {
@@ -28,6 +29,10 @@ class HomeFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceiverOu
         return R.layout.fragment_home
     }
 
+    override fun onPopulateUi(rootView: View) {
+        vSendAudioButton.enabled = false
+    }
+
     override fun onSetListeners(rootView: View) {
         vNewChannelButton.setOnClickListener {
             activity.startActivity<NewChannelActivity>()
@@ -36,6 +41,7 @@ class HomeFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceiverOu
         vSendAudioButton.setOnTouchListener { view, motionEvent ->
             when(motionEvent.action) {
                         MotionEvent.ACTION_DOWN -> {
+                            audioRecordPresenter.channelId = vListeningChannelEditText.text.toString()
                             audioRecordPresenter.startRecording()
                             (view as Button).text = "Recording"
                             return@setOnTouchListener true
@@ -47,6 +53,13 @@ class HomeFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceiverOu
                         }
                         else -> { return@setOnTouchListener false}
                     }
+        }
+
+        vListenToChannelButton.setOnClickListener {
+            if (!vListeningChannelEditText.text.isEmpty()) {
+                vSendAudioButton.enabled = true
+                audioReceiverPresenter.startListeningToChannel(vListeningChannelEditText.text.toString())
+            }
         }
     }
 
@@ -70,18 +83,14 @@ class HomeFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceiverOu
     }
 
     override fun onRecordSuccessful(pathToAudioRecord: String) {
-        //toast("Playing audio")
-        //playAudio(pathToAudioRecord)
+        // Do something
     }
 
     override fun onAudioPostReceived(post: AudioPost, new: Boolean) {
         if (new) {
             vPlayingUserUsername.text = post.uid
             // TODO UNHARDCODE THIS
-            Glide
-                    .with(this)
-                    .load("https://lh5.googleusercontent.com/-QwLSi4cZPFw/AAAAAAAAAAI/AAAAAAAAwV8/B8TOXlKWf_Q/s0-c-k-no-ns/photo.jpg")
-                    .into(vPlayingUserAvatar)
+            vPlayingUserAvatar.loadUrl("https://lh5.googleusercontent.com/-QwLSi4cZPFw/AAAAAAAAAAI/AAAAAAAAwV8/B8TOXlKWf_Q/s0-c-k-no-ns/photo.jpg")
         }
     }
     //endregion

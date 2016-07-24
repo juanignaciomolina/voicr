@@ -22,8 +22,16 @@ class AudioPostPostRecordPresenter(val output: iAudioPostRecordOutput?): iAudioP
     var recorder: MediaRecorder? = null
     var isRecording: Boolean = false
     var pathToRecordedAudio: String? = null
+    var channelId: String? = null
+
 
     override fun startRecording() {
+
+        // Check that a channelID has been set up
+        if (channelId.isNullOrEmpty()) {
+            error { "A channel id must be set up before attempting to record an AudioPost" }
+            return
+        }
 
         // Check runtime permissions
         Dexter.checkPermissions(
@@ -102,6 +110,7 @@ class AudioPostPostRecordPresenter(val output: iAudioPostRecordOutput?): iAudioP
         // Deliver the recorded audio to the service in charge of uploading it
         val intent = Intent(VoicrApplication.Companion.instance, AudioPostUploadService::class.java)
         intent.putExtra(FileUploadService.EXTRA_FILE_PATH, pathToRecordedAudio)
+        intent.putExtra(AudioPostUploadService.EXTRA_CHANNEL, channelId)
         VoicrApplication.instance.startService(intent)
     }
 

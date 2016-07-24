@@ -17,7 +17,7 @@ class AudioPostReceiverPresenter(val output: iAudioPostReceiverOutput): iEmvpPre
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, binder: IBinder) {
             // We've bound to AudioPostReceiverService, cast the IBinder and get AudioPostReceiverService instance
-            val localBinder = binder as AudioPostReceiverService.LocalBinder
+            val localBinder = binder as AudioPostReceiverService.AudioPostReceiverBinder
             service = localBinder.service
 
             startListeningToChannel(listeningChannel!!) //If the service was started, there must be a channel to listen to

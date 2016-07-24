@@ -23,14 +23,19 @@ abstract class FileUploadService : Service() {
     //region Service lifecycle
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
-        if (intent != null && intent.hasExtra(EXTRA_FILE_PATH)) {
-            startUploading(intent.getStringExtra(EXTRA_FILE_PATH), startId)
+        if (intent != null
+                && intent.hasExtra(EXTRA_FILE_PATH)
+                && !intent.getStringExtra(EXTRA_FILE_PATH).isNullOrEmpty()) {
+            if (handleIntentExtras(intent)) {
+                startUploading(intent.getStringExtra(EXTRA_FILE_PATH), startId)
+            } else {
+                stopSelf(startId)
+            }
         } else {
             Log.e(TAG, "A file path must be provided with the extra EXTRA_FILE_PATH")
             stopSelf(startId)
         }
 
-        //return START_REDELIVER_INTENT
         return START_STICKY
     }
 
@@ -56,6 +61,12 @@ abstract class FileUploadService : Service() {
      * Provides a path where the files are uploaded to
      */
     abstract fun getStoragePath(): StorageReference
+
+    /**
+     * A method intended to be overriden by subclasses if neccesary in case
+     * they require intent extras
+     */
+    open fun handleIntentExtras(intent: Intent): Boolean { return true }
 
     fun startUploading(filePath: String, startId: Int) {
         async() {
