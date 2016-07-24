@@ -3,8 +3,9 @@ package com.droidko.voicr.presenters.newChannel
 import android.util.Log
 import com.droidko.voicr.emvp.iEmvpPresenter
 import com.droidko.voicr.firebase.DbAccess
-import com.droidko.voicr.models.Channel
-import com.droidko.voicr.models.UserProfile
+import com.droidko.voicr.models.ChannelProfile
+import com.droidko.voicr.models.ChannelSubs
+import com.droidko.voicr.models.UserSubs
 import com.droidko.voicr.presenters.uploads.FileUploadService
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -23,11 +24,11 @@ class NewChannelPresenter(val output: iNewChannelOutput): iEmvpPresenter, iNewCh
 
         // We first need access to the user's profile so that we can subscribe him to the new channel later
         dbAccess()
-                .userProfile()
+                .userSubscriptions()
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        val userProfile = dataSnapshot.getValue(UserProfile::class.java)
-                        sendChannelCreationRequest(channelName, userProfile)
+                        val userSubs = dataSnapshot.getValue(UserSubs::class.java)
+                        sendChannelCreationRequest(channelName, userSubs)
                     }
 
                     override fun onCancelled(databaseError: DatabaseError) {
@@ -37,15 +38,19 @@ class NewChannelPresenter(val output: iNewChannelOutput): iEmvpPresenter, iNewCh
                 })
     }
 
-    fun sendChannelCreationRequest(channelName: String, userProfile: UserProfile) {
-        val cid = database.reference.child(DbAccess.PATH_CHANNEL).push().key
-        val newChannel = Channel(channelName)
-        newChannel.members.add(uid) // Add current user to the channel that is being created
+    fun sendChannelCreationRequest(channelName: String, userSubs: UserSubs) {
+        val cid = database.reference.child(DbAccess.PATH_CHANNEL_PROFILE).push().key
+        val channelProfile = ChannelProfile(channelName, 1)
+
+        val channelSubs = ChannelSubs()
+        channelSubs.members.add(uid) // Add current user to the channel that is being created
+        userSubs.subscriptions.add(cid) // Add the new channel to the logged user subscriptions
 
         // Prepare an atomic multi-reference update
         val updates: HashMap<String, Any> = HashMap()
-        updates.put("${DbAccess.PATH_CHANNEL}/$cid/", newChannel.toFbMap())
-        updates.put("${DbAccess.PATH_USER_PROFILE}/$uid/", userProfile.toFbMap())
+        updates.put("${DbAccess.PATH_CHANNEL_PROFILE}/$cid/", channelProfile.toFbMap())
+        updates.put("${DbAccess.PATH_CHANNEL_SUBSCRIPTIONS}/$cid/", channelSubs.toFbMap())
+        updates.put("${DbAccess.PATH_USER_SUBSCRIPTIONS}/$uid/", userSubs.toFbMap())
 
         database.reference
                 .updateChildren(updates)

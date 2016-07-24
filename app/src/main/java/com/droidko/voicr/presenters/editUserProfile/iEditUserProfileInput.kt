@@ -6,10 +6,10 @@ import com.droidko.voicr.models.UserProfile
 interface iEditUserProfileInput: iEmvpInput {
 
     /**
-     * Create a brand new user's profile on the server
+     * Register a new [UserProfile] and [UserSubs] on the server side
      * @param newUserProfile: An instance of a [UserProfile] to be stored server side
      */
-    fun newUserProfile(newUserProfile: UserProfile)
+    fun newUser(newUserProfile: UserProfile)
 
     /**
      * Subscribe the current logged user to a channel

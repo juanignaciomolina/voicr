@@ -2,6 +2,7 @@ package com.droidko.voicr.presenters.auth.signup
 
 import com.droidko.voicr.emvp.iEmvpPresenter
 import com.droidko.voicr.models.UserProfile
+import com.droidko.voicr.models.UserSubs
 import com.droidko.voicr.presenters.auth.AuthPresenter
 import com.droidko.voicr.presenters.auth.iAuthOutput
 import com.droidko.voicr.presenters.editUserProfile.EditUserProfilePresenter
@@ -48,7 +49,7 @@ class AuthSignupPresenter(val output: iAuthSignupOutput): iEmvpPresenter, iAuthS
                 .addOnSuccessListener {
                     //After a Firebase user is registered, create an empty profile for it
                     val userProfile = UserProfile()
-                    editUserProfilePresenter.newUserProfile(userProfile)
+                    editUserProfilePresenter.newUser(userProfile)
                 }
                 .addOnFailureListener { exception -> handleSignUpFirebaseError(exception) }
     }
@@ -63,11 +64,11 @@ class AuthSignupPresenter(val output: iAuthSignupOutput): iEmvpPresenter, iAuthS
         }
     }
 
-    override fun onUserProfileCreationSuccessful(userProfile: UserProfile) {
+    override fun onUserCreationSuccessful(userProfile: UserProfile, userSubs: UserSubs) {
         output.onSignUpSuccessful(firebaseAuth.currentUser!!)
     }
 
-    override fun onUserProfileCreationFailure(exception: Exception) {
+    override fun onUserCreationFailure(exception: Exception) {
         handleSignUpFirebaseError(exception)
     }
 }

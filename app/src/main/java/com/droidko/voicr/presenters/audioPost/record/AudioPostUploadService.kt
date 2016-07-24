@@ -22,7 +22,7 @@ class AudioPostUploadService: FileUploadService() {
         val EXTRA_CHANNEL = "channel"
     }
 
-    override fun getStoragePath(): StorageReference = storageAccess.userAudios()
+    override fun getStoragePath(): StorageReference = storageAccess.chanelAudios(cid)
 
     override fun handleIntentExtras(intent: Intent): Boolean {
         if (intent.hasExtra(EXTRA_CHANNEL) && !intent.getStringExtra(EXTRA_CHANNEL).isNullOrEmpty()) {

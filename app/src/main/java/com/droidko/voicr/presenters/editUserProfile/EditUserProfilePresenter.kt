@@ -1,20 +1,34 @@
 package com.droidko.voicr.presenters.editUserProfile
 
 import com.droidko.voicr.emvp.iEmvpPresenter
+import com.droidko.voicr.firebase.DbAccess
 import com.droidko.voicr.models.UserProfile
+import com.droidko.voicr.models.UserSubs
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import org.jetbrains.anko.error
+import java.util.*
 
 class EditUserProfilePresenter(val output: iEditUserProfileOutput): iEmvpPresenter, iEditUserProfileInput {
 
-    override fun newUserProfile(newUserProfile: UserProfile) {
-        dbAccess()
-                .userProfile()
-                .setValue(newUserProfile)
-                .addOnSuccessListener { output.onUserProfileCreationSuccessful(newUserProfile) }
-                .addOnFailureListener { exception -> output.onUserProfileCreationFailure(exception) }
+    val database = FirebaseDatabase.getInstance()
+    val uid = FirebaseAuth.getInstance().currentUser!!.uid
+
+    override fun newUser(newUserProfile: UserProfile) {
+        val newUserSubs = UserSubs() // New empty user subscriptions
+
+        // Prepare an atomic multi-reference update
+        val updates: HashMap<String, Any> = HashMap()
+        updates.put("${DbAccess.PATH_USER_PROFILE}/$uid/", newUserProfile.toFbMap())
+        updates.put("${DbAccess.PATH_USER_SUBSCRIPTIONS}/$uid/", newUserSubs.toFbMap())
+
+        database.reference
+                .updateChildren(updates)
+                .addOnSuccessListener { output.onUserCreationSuccessful(newUserProfile, newUserSubs) }
+                .addOnFailureListener { exception -> output.onUserCreationFailure(exception) }
     }
 
     private fun updateUserProfile(userProfile: UserProfile) {
@@ -22,10 +36,22 @@ class EditUserProfilePresenter(val output: iEditUserProfileOutput): iEmvpPresent
         dbAccess()
                 .userProfile()
                 .setValue(userProfile)
-                .addOnSuccessListener { output.onUserModificationSuccessful(userProfile) }
+                .addOnSuccessListener { output.onUserProfileModificationSuccessful(userProfile) }
                 .addOnFailureListener { exception ->
                     error { "An error occurred while updating the user's profile: $exception" }
-                    output.onUserProfileCreationFailure(exception)
+                    output.onUserCreationFailure(exception)
+                }
+    }
+
+    private fun updateUserSubs(userSubs: UserSubs) {
+        //Update user's subscriptions on the server
+        dbAccess()
+                .userSubscriptions()
+                .setValue(userSubs)
+                .addOnSuccessListener { output.onUserSubsModificationSuccessful(userSubs) }
+                .addOnFailureListener { exception ->
+                    error { "An error occurred while updating the user's subscriptions: $exception" }
+                    output.onUserSubsModificationFailure(exception)
                 }
     }
 
@@ -34,43 +60,43 @@ class EditUserProfilePresenter(val output: iEditUserProfileOutput): iEmvpPresent
                 .userProfile()
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        val userProfile = dataSnapshot.getValue(UserProfile::class.java)
+                        val userSubs = dataSnapshot.getValue(UserSubs::class.java)
 
                         //Check if the user was already subscribed to the channel
-                        if (userProfile.subscriptions.contains(channelId)) {
-                            output.onUserModificationSuccessful(userProfile)
+                        if (userSubs.subscriptions.contains(channelId)) {
+                            output.onUserSubsModificationSuccessful(userSubs)
                         } else {
-                            userProfile.subscriptions.add(channelId)
-                            updateUserProfile(userProfile)
+                            userSubs.subscriptions.add(channelId)
+                            updateUserSubs(userSubs)
                         }
                     }
 
                     override fun onCancelled(databaseError: DatabaseError) {
                         error { "An error occurred while retrieving the user's profile: $databaseError" }
-                        output.onUserModificationFailure(databaseError.toException())
+                        output.onUserProfileModificationFailure(databaseError.toException())
                     }
                 })
     }
 
     override fun removeSubscription(channelId: String) {
         dbAccess()
-                .userProfile()
+                .userSubscriptions()
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        val userProfile = dataSnapshot.getValue(UserProfile::class.java)
+                        val userSubs = dataSnapshot.getValue(UserSubs::class.java)
 
                         //Check if the user was already unsubscribed to the channel
-                        if (!userProfile.subscriptions.contains(channelId)) {
-                            output.onUserModificationSuccessful(userProfile)
+                        if (!userSubs.subscriptions.contains(channelId)) {
+                            output.onUserSubsModificationSuccessful(userSubs)
                         } else {
-                            userProfile.subscriptions.remove(channelId)
-                            updateUserProfile(userProfile)
+                            userSubs.subscriptions.remove(channelId)
+                            updateUserSubs(userSubs)
                         }
                     }
 
                     override fun onCancelled(databaseError: DatabaseError) {
                         error { "An error occurred while retrieving the user's profile: $databaseError" }
-                        output.onUserModificationFailure(databaseError.toException())
+                        output.onUserProfileModificationFailure(databaseError.toException())
                     }
                 })
     }

@@ -2,22 +2,24 @@ package com.droidko.voicr.presenters.editUserProfile
 
 import com.droidko.voicr.emvp.iEmvpOutput
 import com.droidko.voicr.models.UserProfile
+import com.droidko.voicr.models.UserSubs
 
 interface iEditUserProfileOutput: iEmvpOutput {
 
     /**
-     * Callback triggered after a successful user's server side profile creation
-     * @param userProfile: A [UserProfile] instance of the newly created server side user's profile
+     * Callback triggered after a successful creation of a user server side
+     * @param userProfile: A [UserProfile] instance of the newly created user on the server
+     *@param userSubs: A [UserSubs] instance of the newly created user on the server
      */
-    fun onUserProfileCreationSuccessful(userProfile: UserProfile) {
+    fun onUserCreationSuccessful(userProfile: UserProfile, userSubs: UserSubs) {
         // Default empty implementation, override if needed
     }
 
     /**
-     * Callback triggered after an unsuccessful user's server side profile creation
+     * Callback triggered after an unsuccessful creation of a new user server side
      * @param exception: An [Exception] with the creation error
      */
-    fun onUserProfileCreationFailure(exception: Exception) {
+    fun onUserCreationFailure(exception: Exception) {
         // Default empty implementation, override if needed
     }
 
@@ -25,7 +27,7 @@ interface iEditUserProfileOutput: iEmvpOutput {
      * Callback triggered after a successful User's server side profile modification
      * @param userProfile: An updated [UserProfile]
      */
-    fun onUserModificationSuccessful(userProfile: UserProfile) {
+    fun onUserProfileModificationSuccessful(userProfile: UserProfile) {
         // Default empty implementation, override if needed
     }
 
@@ -33,7 +35,23 @@ interface iEditUserProfileOutput: iEmvpOutput {
      * Callback triggered after an unsuccessful user's server side profile modification
      * @param exception: An [Exception] with the modification error
      */
-    fun onUserModificationFailure(exception: Exception) {
+    fun onUserProfileModificationFailure(exception: Exception) {
+        // Default empty implementation, override if needed
+    }
+
+    /**
+     * Callback triggered after a successful user's server side subscriptions modification
+     * @param userSubs: An updated [UserSubs]
+     */
+    fun onUserSubsModificationSuccessful(userSubs: UserSubs) {
+        // Default empty implementation, override if needed
+    }
+
+    /**
+     * Callback triggered after an unsuccessful user's server side subscriptions modification
+     * @param exception: An [Exception] with the modification error
+     */
+    fun onUserSubsModificationFailure(exception: Exception) {
         // Default empty implementation, override if needed
     }
 }
