@@ -3,10 +3,10 @@ package com.droidko.voicr.views.home
 import android.support.v4.app.Fragment
 import com.droidko.voicr.views.BaseActivity
 
-class HomeActivity: BaseActivity() {
+class ChannelActivity: BaseActivity() {
 
     override fun onFragmentRequested(): Fragment {
-        return HomeFragment.newInstance()
+        return ChannelFragment.newInstance(intent.extras.getString(ChannelFragment.EXTRA_CHANNEL_ID))
     }
 
 }

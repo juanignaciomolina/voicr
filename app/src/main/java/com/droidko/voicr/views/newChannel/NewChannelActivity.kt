@@ -6,7 +6,7 @@ import com.droidko.voicr.views.BaseActivity
 class NewChannelActivity: BaseActivity() {
 
     override fun onFragmentRequested(): Fragment {
-        return NewChannelFragment()
+        return NewChannelFragment.newInstance()
     }
 
 }

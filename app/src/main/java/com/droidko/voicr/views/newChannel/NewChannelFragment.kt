@@ -1,5 +1,6 @@
 package com.droidko.voicr.views.newChannel
 
+import android.os.Bundle
 import android.view.View
 import com.droidko.voicr.R
 import com.droidko.voicr.presenters.newChannel.NewChannelPresenter
@@ -9,6 +10,15 @@ import kotlinx.android.synthetic.main.fragment_new_channel.*
 import org.jetbrains.anko.toast
 
 class NewChannelFragment: BaseFragment(), iNewChannelOutput {
+
+    companion object {
+        fun newInstance(): NewChannelFragment {
+            val f = NewChannelFragment()
+            val args = Bundle()
+            f.arguments = args
+            return f
+        }
+    }
 
     val presenter by lazy { NewChannelPresenter(this) }
 

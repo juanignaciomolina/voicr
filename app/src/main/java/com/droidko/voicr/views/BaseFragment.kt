@@ -5,7 +5,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.droidko.voicr.R
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.error
 import org.jetbrains.anko.toast
 
 abstract class BaseFragment : Fragment(), AnkoLogger {
@@ -13,8 +15,23 @@ abstract class BaseFragment : Fragment(), AnkoLogger {
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
         return inflater!!.inflate(onLayoutRequested(), container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (arguments != null && handleArguments(arguments)) {
+            onInitialize(view)
+            onPopulateUi(view)
+            onSetListeners(view)
+        } else {
+            toast(getString(R.string.general_error_unknown))
+            error { "An error occurred while getting the intent extras.\n" +
+                    "Remember to provide extras using the newInstance() method of the Fragment." }
+            activity.finish()
+        }
+
     }
 
     /**
@@ -24,14 +41,15 @@ abstract class BaseFragment : Fragment(), AnkoLogger {
      */
     abstract fun onLayoutRequested(): Int
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        if (view != null) {
-            onInitialize(view)
-            onPopulateUi(view)
-            onSetListeners(view)
-        }
+    /**
+     * Provides a way for a fragment to get intent extras
+     * @param args The bundle obtainable by the getArguments method.
+     * @return true if arguments were read successfully, false otherwise.
+     * Default implementation returns true.
+     */
+    open fun handleArguments(arguments: Bundle): Boolean {
+        return true
     }
 
     /**
@@ -57,13 +75,6 @@ abstract class BaseFragment : Fragment(), AnkoLogger {
      */
     fun Fragment.toast(message: CharSequence) {
         context.toast(message)
-    }
-
-    /**
-     * Shorthand for Context.toast(textResource: Int)
-     */
-    fun Fragment.toast(textResource: Int) {
-        context.toast(textResource)
     }
 
 }

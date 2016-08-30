@@ -41,6 +41,12 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"/>
 
+        <!-- Channel -->
+        <activity
+            android:name=".views.home.ChannelActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"/>
+
         <!-- New Channel -->
         <activity
             android:name=".views.newChannel.NewChannelActivity"

@@ -5,84 +5,32 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:orientation="vertical"
-    android:padding="@dimen/spacing_medium_extra"
     >
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:gravity="end"
+        android:title="Home"
         >
-
-        <EditText
-            android:id="@+id/vListeningChannelEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
-
-        <Button
-            android:id="@+id/vListenToChannelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Listen to channel"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        >
-
-        <TextView
-            android:id="@+id/vPlayingUserUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="HOME SCREEN"
-            android:textAllCaps="true"
-            android:textSize="48dp"
-            />
 
         <ImageView
-            android:id="@+id/vPlayingUserAvatar"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:src="@drawable/common_plus_signin_btn_icon_dark"
-            />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/vUsernameViewer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <Button
             android:id="@+id/vNewChannelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Channel"
+            android:src="@android:drawable/ic_input_add"
             />
 
-        <Button
-            android:id="@+id/vSendAudioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Send Audio"
-            />
+    </android.support.v7.widget.Toolbar>
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/vDefaultChannel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Default channel"
+        android:layout_margin="@dimen/spacing_medium"
+        />
 
 </LinearLayout>
