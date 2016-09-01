@@ -6,7 +6,7 @@ import com.droidko.voicr.views.BaseActivity
 class AuthActivity : BaseActivity() {
 
     override fun onFragmentRequested(): Fragment {
-        return AuthFragment()
+        return AuthFragment.newInstance()
     }
 
 }

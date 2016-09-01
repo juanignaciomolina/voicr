@@ -48,4 +48,7 @@ class AudioPostReceiverPresenter(val output: iAudioPostReceiverOutput): iEmvpPre
         VoicrApplication.instance.bindService(intent, serviceConnection,Context.BIND_AUTO_CREATE)
     }
 
+    fun playAudio(pathToAudioRecord: String) {
+        service?.playAudio(pathToAudioRecord)
+    }
 }

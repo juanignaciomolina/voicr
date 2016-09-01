@@ -1,6 +1,7 @@
 package com.droidko.voicr.views.home
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
@@ -11,8 +12,10 @@ import com.droidko.voicr.presenters.audioPost.receiver.iAudioPostReceiverOutput
 import com.droidko.voicr.presenters.audioPost.record.AudioPostPostRecordPresenter
 import com.droidko.voicr.presenters.audioPost.record.iAudioPostRecordOutput
 import com.droidko.voicr.views.BaseFragment
+import com.droidko.voicr.views.channel.recycler.ChannelRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_channel.*
 import org.jetbrains.anko.error
+import org.jetbrains.anko.info
 
 class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceiverOutput {
 
@@ -30,6 +33,7 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
 
     val audioRecordPresenter by lazy { AudioPostPostRecordPresenter(this) }
     val audioReceiverPresenter by lazy { AudioPostReceiverPresenter(this) }
+    val recyclerAdapter = ChannelRecyclerAdapter()
 
     var audioChannel = ""
 
@@ -49,9 +53,14 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
         }
     }
 
-
     override fun onInitialize(rootView: View) {
         audioRecordPresenter.channelId = audioChannel
+
+        with (vMessagesRecycler) {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(activity)
+            adapter = recyclerAdapter
+        }
     }
 
     override fun onPopulateUi(rootView: View) {
@@ -76,6 +85,17 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
                     }
         }
 
+        recyclerAdapter.clickListener = object : ChannelRecyclerAdapter.ClickListener {
+            override fun onPlayClicked(post: AudioPost) {
+                info { "Playing audio of user ${post.uid}" }
+                audioReceiverPresenter.playAudio(post.downloadUrl)
+            }
+
+            override fun onAvatarClicked(post: AudioPost) {
+                info { "Avatar clicked of user ${post.uid}" }
+            }
+
+        }
     }
 
     override fun onStart() {
@@ -102,7 +122,12 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
     }
 
     override fun onAudioPostReceived(post: AudioPost, new: Boolean) {
-        // Do nothing
+        showAudioPost(post, new)
+    }
+
+    fun showAudioPost(post: AudioPost, new: Boolean) {
+        recyclerAdapter.addAudioPost(post)
+        vMessagesRecycler.scrollToPosition(0)
     }
     //endregion
 }

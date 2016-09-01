@@ -11,6 +11,7 @@ import com.droidko.voicr.models.AudioPost
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import org.jetbrains.anko.async
 import java.io.IOException
 
 
@@ -98,25 +99,29 @@ class AudioPostReceiverService: Service() {
 
     //region Playing audios
     fun playAudio(pathToAudioRecord: String) {
-        mediaPlayer = MediaPlayer()
-        try {
-            mediaPlayer?.setAudioStreamType(AudioManager.STREAM_MUSIC)
-            mediaPlayer?.setDataSource(pathToAudioRecord);
-            mediaPlayer?.prepare();
-            mediaPlayer?.start();
-        } catch (e: IOException) {
-            freeMediaPlayer()
-            error { "MediaPlayer failed on method prepare(). Exception: ${e.message}" }
+        async() {
+            mediaPlayer = MediaPlayer()
+            try {
+                mediaPlayer?.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                mediaPlayer?.setDataSource(pathToAudioRecord);
+                mediaPlayer?.prepare();
+                mediaPlayer?.start();
+            } catch (e: IOException) {
+                freeMediaPlayer()
+                error { "MediaPlayer failed on method prepare(). Exception: ${e.message}" }
+            }
         }
     }
 
     fun stopAudio() {
-        try {
-            mediaPlayer?.stop()
-        } catch(e: Exception) {
-            error { "MediaPlayer failed on method stop(). Exception: ${e.message}" }
-        } finally {
-            freeMediaPlayer()
+        async() {
+            try {
+                mediaPlayer?.stop()
+            } catch(e: Exception) {
+                error { "MediaPlayer failed on method stop(). Exception: ${e.message}" }
+            } finally {
+                freeMediaPlayer()
+            }
         }
     }
 

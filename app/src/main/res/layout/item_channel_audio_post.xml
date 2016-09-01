@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:preview="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="88dp"
+    android:padding="@dimen/spacing_medium">
+
+    <ImageView
+        android:id="@+id/vAvatar"
+        android:layout_width="72dp"
+        android:layout_height="match_parent"
+        android:background="@color/paletteBackgroundDark"
+        />
+
+    <TextView
+        android:id="@+id/vAuthor"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:lines="1"
+        android:ellipsize="end"
+        preview:text="Author"
+        />
+
+    <Button
+        android:id="@+id/vPlayButton"
+        android:layout_width="72dp"
+        android:layout_height="match_parent"
+        android:text="Play"
+        />
+
+</LinearLayout>

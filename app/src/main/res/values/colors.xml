@@ -6,17 +6,21 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     
-    <!-- Base colors -->
-    <color name="turquoise">#1abc9c</color>
-    <color name="emerald">#2ecc71</color>
-    <color name="blue">#3498db</color>
-    <color name="purple">#9b59b6</color>
-    <color name="asphalt">#34495e</color>
-    <color name="yellow">#f1c40f</color>
-    <color name="orange">#e67e22</color>
-    <color name="red">#e74c3c</color>
-    <color name="clouds">#ecf0f1</color>
-    <color name="concrete">#95a5a6</color>
+    <!-- Palette: Primary -->
+    <color name="paletteOnePrimary">#1abc9c</color>
+    <color name="paletteOneSecondary">#2ecc71</color>
+    <color name="paletteTwoPrimary">#3498db</color>
+    <color name="paletteTwoSecondary">#9b59b6</color>
+    <color name="paletteBackgroundLight">#ecf0f1</color>
+    <color name="paletteBackgroundDark">#95a5a6</color>
 
+    <!-- Palette: Secondary -->
+    <!--
+    <color name="theme_secondary_asphalt">#34495e</color>
+    <color name="theme_secondary_yellow">#f1c40f</color>
+    <color name="theme_secondary_orange">#e67e22</color>
+    <color name="theme_secondary_red">#e74c3c</color>
+    <color name="theme_secondary_concrete">#95a5a6</color>
+    -->
 
 </resources>

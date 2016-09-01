@@ -1,5 +1,6 @@
 package com.droidko.voicr.views.auth
 
+import android.os.Bundle
 import android.view.View
 import com.droidko.voicr.R
 import com.droidko.voicr.presenters.auth.iAuthOutput
@@ -14,6 +15,15 @@ import kotlinx.android.synthetic.main.fragment_login.*
 import org.jetbrains.anko.startActivity
 
 class AuthFragment : BaseFragment(), iAuthLoginOutput, iAuthSignupOutput {
+
+    companion object {
+        fun newInstance(): AuthFragment {
+            val f = AuthFragment()
+            val args = Bundle()
+            f.arguments = args
+            return f
+        }
+    }
 
     val loginPresenter by lazy { AuthLoginPresenter(this) }
     val signupPresenter by lazy { AuthSignupPresenter(this) }

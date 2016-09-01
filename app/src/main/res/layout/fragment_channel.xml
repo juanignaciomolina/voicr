@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:animateLayoutChanges="true"
     android:padding="@dimen/spacing_medium_extra"
     >
 
     <TextView
         android:id="@+id/vChannelTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="@dimen/font_large"
+        android:layout_marginBottom="@dimen/spacing_medium_extra"
         android:text="Channel Title"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/vMessagesRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         />
 
     <Button
         android:id="@+id/vSendAudioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium_extra"
         android:layout_gravity="bottom|center_horizontal"
         android:text="Send audio"
         />
 
-</FrameLayout>
+</LinearLayout>
