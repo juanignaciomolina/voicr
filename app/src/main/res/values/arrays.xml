@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Loading indicator color palette-->
+    <array name="loading_dot_colors">
+        <item>@color/paletteOnePrimary</item>
+        <item>@color/paletteTwoPrimary</item>
+        <item>@color/paletteOneSecondary</item>
+        <item>@color/paletteTwoSecondary</item>
+    </array>
+
+    <!--  Loading indicator color palette-->
+    <array name="mic_recording_dot_colors">
+        <item>#FFFFFFFF</item>
+    </array>
+
+</resources>

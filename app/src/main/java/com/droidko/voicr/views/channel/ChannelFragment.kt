@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Button
 import com.droidko.voicr.R
 import com.droidko.voicr.models.AudioPost
 import com.droidko.voicr.presenters.audioPost.receiver.AudioPostReceiverPresenter
@@ -73,12 +72,10 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
             when(motionEvent.action) {
                         MotionEvent.ACTION_DOWN -> {
                             audioRecordPresenter.startRecording()
-                            (view as Button).text = "Recording"
                             return@setOnTouchListener true
                         }
                         MotionEvent.ACTION_UP -> {
                             audioRecordPresenter.stopRecording()
-                            (view as Button).text = "Audio"
                             return@setOnTouchListener true
                         }
                         else -> { return@setOnTouchListener false}
@@ -126,6 +123,10 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
     }
 
     fun showAudioPost(post: AudioPost, new: Boolean) {
+        if (vDotLoadingIndicator.visibility == View.VISIBLE) {
+            vDotLoadingIndicator.visibility = View.GONE
+            vMessagesRecycler.visibility = View.VISIBLE
+        }
         recyclerAdapter.addAudioPost(post)
         vMessagesRecycler.scrollToPosition(0)
     }
