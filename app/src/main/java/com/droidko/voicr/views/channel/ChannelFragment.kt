@@ -1,9 +1,11 @@
 package com.droidko.voicr.views.home
 
+import android.animation.Animator
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewAnimationUtils
 import com.droidko.voicr.R
 import com.droidko.voicr.models.AudioPost
 import com.droidko.voicr.presenters.audioPost.receiver.AudioPostReceiverPresenter
@@ -20,6 +22,8 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
 
     companion object {
         val EXTRA_CHANNEL_ID = "extraChannelId"
+        private val ANIM_CIRCULAR_REVEAL_IN_DURATION = 400L
+        private val ANIM_CIRCULAR_REVEAL_OUT_DURATION = 400L
 
         fun newInstance(channelId: String): ChannelFragment {
             val f = ChannelFragment()
@@ -64,6 +68,7 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
 
     override fun onPopulateUi(rootView: View) {
         vChannelTitle.text = audioChannel
+        vRecordingMicReveal.visibility = View.INVISIBLE
     }
 
     override fun onSetListeners(rootView: View) {
@@ -72,10 +77,12 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
             when(motionEvent.action) {
                         MotionEvent.ACTION_DOWN -> {
                             audioRecordPresenter.startRecording()
+                            animateCircularRevealIn()
                             return@setOnTouchListener true
                         }
                         MotionEvent.ACTION_UP -> {
                             audioRecordPresenter.stopRecording()
+                            animateCircularRevealOut()
                             return@setOnTouchListener true
                         }
                         else -> { return@setOnTouchListener false}
@@ -129,6 +136,81 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
         }
         recyclerAdapter.addAudioPost(post)
         vMessagesRecycler.scrollToPosition(0)
+    }
+    //endregion
+
+    //region animations
+    fun animateCircularRevealIn() {
+
+        vRecordingMicReveal.visibility = View.VISIBLE
+
+        // get the center for the clipping circle, in this case the FAB button
+        val centerX = (vSendAudioButton.left + vSendAudioButton.right) / 2
+        val centerY = (vSendAudioButton.top + vSendAudioButton.bottom) / 2
+
+        val startRadius = 0f
+        // get the final radius for the clipping circle
+        val endRadius = Math
+                .hypot(vRecordingMicReveal.width.toDouble(), vRecordingMicReveal.height.toDouble())
+                .toFloat()
+
+        // create the animator for this view (the start radius is zero)
+        val circularRevealAnimation = ViewAnimationUtils.createCircularReveal(
+                vRecordingMicReveal,
+                centerX,
+                centerY,
+                startRadius,
+                endRadius)
+
+        circularRevealAnimation.duration = ANIM_CIRCULAR_REVEAL_IN_DURATION
+
+        circularRevealAnimation.start()
+    }
+
+    fun animateCircularRevealOut() {
+
+        vRecordingMicReveal.visibility = View.VISIBLE
+
+        // get the center for the clipping circle, in this case the FAB button
+        val centerX = (vSendAudioButton.left + vSendAudioButton.right) / 2
+        val centerY = (vSendAudioButton.top + vSendAudioButton.bottom) / 2
+
+        val endRadius = 0f
+        // get the final radius for the clipping circle
+        val startRadius = Math
+                .hypot(vRecordingMicReveal.width.toDouble(), vRecordingMicReveal.height.toDouble())
+                .toFloat()
+
+        // create the animator for this view (the start radius is zero)
+        val circularRevealAnimation = ViewAnimationUtils.createCircularReveal(
+                vRecordingMicReveal,
+                centerX,
+                centerY,
+                startRadius,
+                endRadius)
+
+        circularRevealAnimation.duration = ANIM_CIRCULAR_REVEAL_OUT_DURATION
+
+        circularRevealAnimation.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationRepeat(p0: Animator?) {
+
+            }
+
+            override fun onAnimationEnd(p0: Animator?) {
+                vRecordingMicReveal.visibility = View.INVISIBLE
+            }
+
+            override fun onAnimationCancel(p0: Animator?) {
+
+            }
+
+            override fun onAnimationStart(p0: Animator?) {
+
+            }
+
+        })
+
+        circularRevealAnimation.start()
     }
     //endregion
 }

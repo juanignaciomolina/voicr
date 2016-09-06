@@ -9,9 +9,9 @@
         <item>@color/paletteTwoSecondary</item>
     </array>
 
-    <!--  Loading indicator color palette-->
+    <!--  Recording indicator colors (intended usage with RecordingMicComponent -->
     <array name="mic_recording_dot_colors">
-        <item>#FFFFFFFF</item>
+        <item>@color/white</item>
     </array>
 
 </resources>
