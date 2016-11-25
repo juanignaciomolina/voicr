@@ -44,14 +44,31 @@ class HomeFragment: BaseFragment() {
 
     override fun onPopulateUi(rootView: View) {
         // TODO REMOVE DUMMY CHANNEL
-        val myChannel = ChannelProfile(
-                "myChannel",
-                1,
-                "http://images-cdn.moviepilot.com/image/upload/v1426601393/danielcraigasbond-sorry-idris-why-daniel-craig-isn-t-leaving-james-bond-and-shouldn-t-jpeg-209169.jpg"
+        val testChannel1 = ChannelProfile(
+                cid = "myChannel",
+                name = "james bond",
+                membersCount = 1,
+                avatar = "http://images-cdn.moviepilot.com/image/upload/v1426601393/danielcraigasbond-sorry-idris-why-daniel-craig-isn-t-leaving-james-bond-and-shouldn-t-jpeg-209169.jpg"
         )
 
-        channelsDataset.add(myChannel)
-        channelsAdapter.notifyItemInserted(0)
+        val testChannel2 = ChannelProfile(
+                cid = "koolChannel",
+                name = "adam levine",
+                membersCount = 1,
+                avatar = "https://images-na.ssl-images-amazon.com/images/M/MV5BMjI4NjU4MDEwN15BMl5BanBnXkFtZTcwNTQzNDMwNw@@._V1_UX214_CR0,0,214,317_AL_.jpg"
+        )
+
+        val testChannel3 = ChannelProfile(
+                cid = "ultraChannel",
+                name = "michel fassbender",
+                membersCount = 1,
+                avatar = "http://vignette2.wikia.nocookie.net/twilightsaga/images/f/fd/Michael-fassbender.jpg/revision/latest?cb=20130518210021"
+        )
+
+        channelsDataset.add(testChannel1)
+        channelsDataset.add(testChannel2)
+        channelsDataset.add(testChannel3)
+        channelsAdapter.notifyDataSetChanged()
     }
 
     override fun onSetListeners(rootView: View) {
@@ -61,7 +78,7 @@ class HomeFragment: BaseFragment() {
         vChannelsRecycler.addOnItemTouchListener(object : OnItemClickListener() {
             override fun SimpleOnItemClick(adapter: BaseQuickAdapter<*, *>?, view: View, position: Int) {
                 activity.startActivity<ChannelActivity>(
-                        ChannelFragment.EXTRA_CHANNEL_ID to channelsDataset.get(position).name
+                        ChannelFragment.EXTRA_CHANNEL_ID to channelsDataset.get(position).cid
                 )
             }
         })

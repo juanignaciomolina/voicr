@@ -6,13 +6,15 @@ import java.util.*
 // TODO Reference: https://firebase.google.com/docs/database/android/offline-capabilities
 
 data class ChannelProfile(
-        val name: String,
-        val membersCount: Int,
+        val cid: String,
+        val name: String = "",
+        val membersCount: Int = 0,
         val avatar: String = "",
         val timestamp: Long = System.currentTimeMillis() / 1000L) {
 
     fun toFbMap() : HashMap<String, Any> {
         val mappedChannel: HashMap<String, Any> = HashMap()
+        mappedChannel.put("cid", cid)
         mappedChannel.put("name", name)
         mappedChannel.put("avatar", avatar)
         mappedChannel.put("membersCount", membersCount)

@@ -40,7 +40,7 @@ class NewChannelPresenter(val output: iNewChannelOutput): iEmvpPresenter, iNewCh
 
     fun sendChannelCreationRequest(channelName: String, userSubs: UserSubs) {
         val cid = database.reference.child(DbAccess.PATH_CHANNEL_PROFILE).push().key
-        val channelProfile = ChannelProfile(channelName, 1)
+        val channelProfile = ChannelProfile(cid = cid, name = channelName, membersCount = 1)
 
         val channelSubs = ChannelSubs()
         channelSubs.members.add(uid) // Add current user to the channel that is being created
