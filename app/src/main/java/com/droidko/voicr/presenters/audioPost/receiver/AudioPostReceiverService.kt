@@ -11,7 +11,7 @@ import com.droidko.voicr.models.AudioPost
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import org.jetbrains.anko.async
+import org.jetbrains.anko.doAsync
 import java.io.IOException
 
 
@@ -99,7 +99,7 @@ class AudioPostReceiverService: Service() {
 
     //region Playing audios
     fun playAudio(pathToAudioRecord: String) {
-        async() {
+        doAsync {
             mediaPlayer = MediaPlayer()
             try {
                 mediaPlayer?.setAudioStreamType(AudioManager.STREAM_MUSIC)
@@ -114,7 +114,7 @@ class AudioPostReceiverService: Service() {
     }
 
     fun stopAudio() {
-        async() {
+        doAsync {
             try {
                 mediaPlayer?.stop()
             } catch(e: Exception) {

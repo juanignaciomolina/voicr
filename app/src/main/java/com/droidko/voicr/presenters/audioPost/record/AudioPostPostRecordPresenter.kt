@@ -8,7 +8,7 @@ import com.droidko.voicr.presenters.uploads.FileUploadService
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.listener.multi.EmptyMultiplePermissionsListener
-import org.jetbrains.anko.async
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.error
 import java.io.File
 import java.util.*
@@ -50,7 +50,7 @@ class AudioPostPostRecordPresenter(val output: iAudioPostRecordOutput?): iAudioP
         // Check that the MediaRecorder is not recording, otherwise it will throw an exception
         if (isRecording) return
 
-        async() {
+        doAsync {
 
             // Set up an internal directory if it doesn't exist already
             val pendingUploadsDir = File(VoicrApplication.instance.filesDir, "$TEMPORARY_FILES_PATH")

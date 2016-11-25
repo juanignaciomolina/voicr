@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.droidko.voicr.R
 import com.droidko.voicr.views.BaseFragment
+import com.droidko.voicr.views.channel.ChannelFragment
 import com.droidko.voicr.views.newChannel.NewChannelActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.startActivity

@@ -3,28 +3,31 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
         applicationId "com.droidko.voicr"
         minSdkVersion 21
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
 
         // SVG icons support
         vectorDrawables.useSupportLibrary = true
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+
 }
 
 buildscript {
@@ -45,24 +48,25 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // Firebase dependencies
-    compile 'com.google.firebase:firebase-core:9.0.2'
-    compile 'com.google.firebase:firebase-database:9.0.2'
-    compile 'com.google.firebase:firebase-auth:9.0.2'
-    compile 'com.google.firebase:firebase-storage:9.0.2'
+    compile 'com.google.firebase:firebase-core:10.0.0'
+    compile 'com.google.firebase:firebase-database:10.0.0'
+    compile 'com.google.firebase:firebase-auth:10.0.0'
+    compile 'com.google.firebase:firebase-storage:10.0.0'
 
     // Base dependencies
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:appcompat-v7:25.0.1'
 
     // Backend dependencies
     compile 'com.karumi:dexter:2.2.2' //Runtime permissions
 
     // Frontend dependencies
         // -> Base dependencies
-    compile 'org.jetbrains.anko:anko-common:0.8.3'
-    compile 'org.jetbrains.anko:anko-sdk21:0.8.3'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-        // -> UI components
+    compile 'org.jetbrains.anko:anko-common:0.9'
+    compile 'org.jetbrains.anko:anko-sdk21:0.9'
+    compile 'com.android.support:recyclerview-v7:25.0.1'
+    compile 'com.facebook.fresco:fresco:0.14.1'
+    compile 'joda-time:joda-time:2.9.6'
+    // -> UI components
     compile 'com.github.bhargavms:DotLoader:1.0.0'
 
     // Testing dependencies

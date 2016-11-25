@@ -1,4 +1,4 @@
-package com.droidko.voicr.views.home
+package com.droidko.voicr.views.channel
 
 import android.animation.Animator
 import android.os.Bundle
@@ -22,7 +22,7 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
 
     companion object {
         val EXTRA_CHANNEL_ID = "extraChannelId"
-        private val ANIM_CIRCULAR_REVEAL_IN_DURATION = 400L
+        private val ANIM_CIRCULAR_REVEAL_IN_DURATION = 200L
         private val ANIM_CIRCULAR_REVEAL_OUT_DURATION = 400L
 
         fun newInstance(channelId: String): ChannelFragment {
@@ -165,6 +165,7 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
         circularRevealAnimation.duration = ANIM_CIRCULAR_REVEAL_IN_DURATION
 
         circularRevealAnimation.start()
+        vRecordingMicReveal.startCounter()
     }
 
     fun animateCircularRevealOut() {
@@ -176,7 +177,7 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
         val centerY = (vSendAudioButton.top + vSendAudioButton.bottom) / 2
 
         val endRadius = 0f
-        // get the final radius for the clipping circle
+        // get the start radius for the clipping circle
         val startRadius = Math
                 .hypot(vRecordingMicReveal.width.toDouble(), vRecordingMicReveal.height.toDouble())
                 .toFloat()
@@ -211,6 +212,7 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
         })
 
         circularRevealAnimation.start()
+        vRecordingMicReveal.stopCounter()
     }
     //endregion
 }

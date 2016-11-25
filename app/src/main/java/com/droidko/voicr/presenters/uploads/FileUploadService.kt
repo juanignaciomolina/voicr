@@ -8,7 +8,7 @@ import android.util.Log
 import com.droidko.voicr.firebase.StorageAccess
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
-import org.jetbrains.anko.async
+import org.jetbrains.anko.doAsync
 import java.io.File
 
 abstract class FileUploadService : Service() {
@@ -69,7 +69,7 @@ abstract class FileUploadService : Service() {
     open fun handleIntentExtras(intent: Intent): Boolean { return true }
 
     fun startUploading(filePath: String, startId: Int) {
-        async() {
+        doAsync {
             val fileUri = Uri.fromFile(File(filePath));
             val uploadRef = getStoragePath().child(fileUri.lastPathSegment);
             val uploadTask = uploadRef.putFile(fileUri);
