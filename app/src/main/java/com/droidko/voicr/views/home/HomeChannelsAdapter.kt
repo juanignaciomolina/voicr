@@ -14,5 +14,6 @@ class HomeChannelsAdapter(dataset : List<ChannelProfile>) :
     override fun convert(viewHolder: BaseViewHolder, item: ChannelProfile) {
         viewHolder.getView<SimpleDraweeView>(R.id.vAvatar).setImageURI(item.avatar)
         viewHolder.getView<TextView>(R.id.vAuthor).text = item.name
+        viewHolder.getView<TextView>(R.id.vMembersCount).text =  "${item.membersCount} followers"
     }
 }

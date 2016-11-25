@@ -1,7 +1,7 @@
 package com.droidko.voicr.views.home
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemClickListener
@@ -38,7 +38,7 @@ class HomeFragment: BaseFragment() {
 
     override fun onInitialize(rootView: View) {
         vChannelsRecycler.setHasFixedSize(true)
-        vChannelsRecycler.layoutManager = LinearLayoutManager(context)
+        vChannelsRecycler.layoutManager = GridLayoutManager(context, 2)
         vChannelsRecycler.adapter = channelsAdapter
     }
 

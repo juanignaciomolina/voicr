@@ -3,30 +3,46 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:preview="http://schemas.android.com/tools"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="128dp"
+    android:layout_height="wrap_content"
     android:padding="@dimen/spacing_medium"
     android:background="?attr/selectableItemBackground"
     >
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/vAvatar"
-        android:layout_width="104dp"
-        android:layout_height="match_parent"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_gravity="center_horizontal"
         fresco:roundAsCircle="true"
         fresco:placeholderImage="@color/paletteBackgroundLight"
+        fresco:roundingBorderWidth="2dp"
+        fresco:roundingBorderColor="@color/paletteOnePrimary"
         />
 
     <TextView
         android:id="@+id/vAuthor"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_medium_extra"
+        android:layout_margin="@dimen/spacing_medium"
         android:gravity="center"
         android:lines="1"
         android:ellipsize="end"
         preview:text="Author"
+        />
+
+    <TextView
+        android:id="@+id/vMembersCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_small"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:gravity="center"
+        android:lines="1"
+        android:ellipsize="end"
+        preview:text="1 member"
         />
 
 </LinearLayout>
