@@ -68,6 +68,7 @@ dependencies {
     compile 'joda-time:joda-time:2.9.6'
     // -> UI components
     compile 'com.github.bhargavms:DotLoader:1.0.0'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.6.1'
 
     // Testing dependencies
     testCompile 'junit:junit:4.12'

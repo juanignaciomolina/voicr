@@ -8,11 +8,13 @@ import java.util.*
 data class ChannelProfile(
         val name: String,
         val membersCount: Int,
+        val avatar: String = "",
         val timestamp: Long = System.currentTimeMillis() / 1000L) {
 
     fun toFbMap() : HashMap<String, Any> {
         val mappedChannel: HashMap<String, Any> = HashMap()
         mappedChannel.put("name", name)
+        mappedChannel.put("avatar", avatar)
         mappedChannel.put("membersCount", membersCount)
         mappedChannel.put("timestamp", timestamp)
         return mappedChannel

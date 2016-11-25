@@ -1,6 +1,7 @@
 package com.droidko.voicr
 
 import android.app.Application
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.firebase.database.FirebaseDatabase
 import com.karumi.dexter.Dexter
 
@@ -17,6 +18,7 @@ class VoicrApplication: Application() {
 
         setUpRuntimePermissions()
         setUpFirebase()
+        setUpFresco()
     }
 
     private fun setUpRuntimePermissions() {
@@ -25,5 +27,9 @@ class VoicrApplication: Application() {
 
     private fun setUpFirebase() {
         FirebaseDatabase.getInstance().setPersistenceEnabled(true)
+    }
+
+    private fun setUpFresco() {
+        Fresco.initialize(this);
     }
 }
