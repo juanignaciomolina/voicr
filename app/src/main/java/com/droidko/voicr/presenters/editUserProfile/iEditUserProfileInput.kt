@@ -1,27 +1,27 @@
 package com.droidko.voicr.presenters.editUserProfile
 
 import com.droidko.voicr.emvp.iEmvpInput
+import com.droidko.voicr.models.ChannelProfile
 import com.droidko.voicr.models.UserProfile
 
 interface iEditUserProfileInput: iEmvpInput {
 
     /**
      * Register a new [UserProfile] and [UserSubs] on the server side
-     * @param newUserProfile: An instance of a [UserProfile] to be stored server side
      */
-    fun newUser(newUserProfile: UserProfile)
+    fun newUser()
 
     /**
      * Subscribe the current logged user to a channel
      * @param channelId: The ID of the channel that the user will be subscribed to
      */
-    fun addSubscription(channelId: String)
+    fun addSubscription(channelProfile: ChannelProfile)
 
     /**
      * Unsubscribes the current logged user from a given channel
      * @param channelId: The ID of the channel that the user will be unsubscribed from
      */
-    fun removeSubscription(channelId: String)
+    fun removeSubscription(channelProfile: ChannelProfile)
 
     /**
      * Update the logged user profile avatar by providing a suitable URL

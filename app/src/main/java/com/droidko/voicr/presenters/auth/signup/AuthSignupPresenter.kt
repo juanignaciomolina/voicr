@@ -48,8 +48,7 @@ class AuthSignupPresenter(val output: iAuthSignupOutput): iEmvpPresenter, iAuthS
                 .createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
                     //After a Firebase user is registered, create an empty profile for it
-                    val userProfile = UserProfile()
-                    editUserProfilePresenter.newUser(userProfile)
+                    editUserProfilePresenter.newUser()
                 }
                 .addOnFailureListener { exception -> handleSignUpFirebaseError(exception) }
     }

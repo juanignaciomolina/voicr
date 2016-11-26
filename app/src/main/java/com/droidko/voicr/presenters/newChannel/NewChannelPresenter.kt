@@ -43,8 +43,8 @@ class NewChannelPresenter(val output: iNewChannelOutput): iEmvpPresenter, iNewCh
         val channelProfile = ChannelProfile(cid = cid, name = channelName, membersCount = 1)
 
         val channelSubs = ChannelSubs()
-        channelSubs.members.add(uid) // Add current user to the channel that is being created
-        userSubs.subscriptions.add(cid) // Add the new channel to the logged user subscriptions
+        channelSubs.members.put(uid, true) // Add current user to the channel that is being created
+        userSubs.subscriptions.put(cid, channelProfile) // Add the new channel to the logged user subscriptions
 
         // Prepare an atomic multi-reference update
         val updates: HashMap<String, Any> = HashMap()

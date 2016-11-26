@@ -2,6 +2,7 @@ package com.droidko.voicr.presenters.editUserProfile
 
 import com.droidko.voicr.emvp.iEmvpPresenter
 import com.droidko.voicr.firebase.DbAccess
+import com.droidko.voicr.models.ChannelProfile
 import com.droidko.voicr.models.UserProfile
 import com.droidko.voicr.models.UserSubs
 import com.google.firebase.auth.FirebaseAuth
@@ -17,7 +18,8 @@ class EditUserProfilePresenter(val output: iEditUserProfileOutput): iEmvpPresent
     val database = FirebaseDatabase.getInstance()
     val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
-    override fun newUser(newUserProfile: UserProfile) {
+    override fun newUser() {
+        val newUserProfile = UserProfile(uid) // New empty user profile
         val newUserSubs = UserSubs() // New empty user subscriptions
 
         // Prepare an atomic multi-reference update
@@ -55,7 +57,7 @@ class EditUserProfilePresenter(val output: iEditUserProfileOutput): iEmvpPresent
                 }
     }
 
-    override fun addSubscription(channelId: String) {
+    override fun addSubscription(channelProfile: ChannelProfile) {
         dbAccess()
                 .userProfile()
                 .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -63,10 +65,10 @@ class EditUserProfilePresenter(val output: iEditUserProfileOutput): iEmvpPresent
                         val userSubs = dataSnapshot.getValue(UserSubs::class.java)
 
                         //Check if the user was already subscribed to the channel
-                        if (userSubs.subscriptions.contains(channelId)) {
+                        if (userSubs.subscriptions.contains(channelProfile.cid)) {
                             output.onUserSubsModificationSuccessful(userSubs)
                         } else {
-                            userSubs.subscriptions.add(channelId)
+                            userSubs.subscriptions.put(channelProfile.cid, channelProfile)
                             updateUserSubs(userSubs)
                         }
                     }
@@ -78,7 +80,7 @@ class EditUserProfilePresenter(val output: iEditUserProfileOutput): iEmvpPresent
                 })
     }
 
-    override fun removeSubscription(channelId: String) {
+    override fun removeSubscription(channelProfile: ChannelProfile) {
         dbAccess()
                 .userSubscriptions()
                 .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -86,10 +88,10 @@ class EditUserProfilePresenter(val output: iEditUserProfileOutput): iEmvpPresent
                         val userSubs = dataSnapshot.getValue(UserSubs::class.java)
 
                         //Check if the user was already unsubscribed to the channel
-                        if (!userSubs.subscriptions.contains(channelId)) {
+                        if (!userSubs.subscriptions.contains(channelProfile.cid)) {
                             output.onUserSubsModificationSuccessful(userSubs)
                         } else {
-                            userSubs.subscriptions.remove(channelId)
+                            userSubs.subscriptions.remove(channelProfile.cid)
                             updateUserSubs(userSubs)
                         }
                     }

@@ -3,7 +3,7 @@ package com.droidko.voicr.models
 import java.util.*
 
 data class UserSubs(
-        val subscriptions: ArrayList<String> = ArrayList(),
+        val subscriptions: HashMap<String, ChannelProfile> = HashMap(),
         val timestamp: Long = System.currentTimeMillis() / 1000L) {
 
     fun toFbMap() : HashMap<String, Any> {
