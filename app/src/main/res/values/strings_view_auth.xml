@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Auth view-->
+    <string name="view_auth_login">Log in</string>
+    <string name="view_auth_signup">Sign up</string>
+    <string name="view_auth_email_hint">Email</string>
+    <string name="view_auth_password_hint">Password</string>
+    <string name="view_auth_confirm_password_hint">Confirm password</string>
+    <string name="view_auth_error_invalid_email">Must be a valid email</string>
+    <string name="view_auth_error_invalid_password">Must be at least 8 characters long</string>
+    <string name="view_auth_error_passwords_dont_match">Passwords don\'t match</string>
+    <string name="view_auth_error_invalid_credentials">Wrong email or password</string>
+    <string name="view_auth_error_email_taken">Email already registered</string>
+    <string name="view_auth_error_email_not_registered">Wrong email</string>
+    <string name="view_auth_loading">Loading…</string>
+    <string name="view_auth_message_successful">Ready to start!</string>
+    <string name="view_auth_message_error">Ups, we couldn\'t connect to the servers. \n Try again later</string>
+
+</resources>

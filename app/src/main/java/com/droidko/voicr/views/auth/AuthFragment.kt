@@ -76,14 +76,14 @@ class AuthFragment : BaseFragment(), iAuthLoginOutput, iAuthSignupOutput {
 
         // Show appropriate error message
         when(error) {
-            iAuthOutput.AuthError.SERVER_REJECTED_CREDENTIALS -> toast(getString(R.string.auth_error_invalid_credentials))
-            iAuthOutput.AuthError.INVALID_EMAIL -> vEmailEditText.error = getString(R.string.auth_error_invalid_email)
-            iAuthOutput.AuthError.PASSWORD_TOO_SHORT -> vPasswordEditText.error = getString(R.string.auth_error_invalid_password)
-            iAuthOutput.AuthError.PASSWORDS_DONT_MATCH -> vConfirmPasswordEditText.error = getString(R.string.auth_error_passwords_dont_match)
+            iAuthOutput.AuthError.SERVER_REJECTED_CREDENTIALS -> toast(getString(R.string.view_auth_error_invalid_credentials))
+            iAuthOutput.AuthError.INVALID_EMAIL -> vEmailEditText.error = getString(R.string.view_auth_error_invalid_email)
+            iAuthOutput.AuthError.PASSWORD_TOO_SHORT -> vPasswordEditText.error = getString(R.string.view_auth_error_invalid_password)
+            iAuthOutput.AuthError.PASSWORDS_DONT_MATCH -> vConfirmPasswordEditText.error = getString(R.string.view_auth_error_passwords_dont_match)
             iAuthOutput.AuthError.NETWORK -> toast(getString(R.string.general_error_network))
             iAuthOutput.AuthError.UNKNOWN -> toast(getString(R.string.general_error_unknown))
-            iAuthOutput.AuthError.EMAIL_TAKEN -> toast(getString(R.string.auth_error_email_taken))
-            iAuthOutput.AuthError.EMAIL_NOT_REGISTERED -> toast(getString(R.string.auth_error_email_not_registered))
+            iAuthOutput.AuthError.EMAIL_TAKEN -> toast(getString(R.string.view_auth_error_email_taken))
+            iAuthOutput.AuthError.EMAIL_NOT_REGISTERED -> toast(getString(R.string.view_auth_error_email_not_registered))
         }
     }
 

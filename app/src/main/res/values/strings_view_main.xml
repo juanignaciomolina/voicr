@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Main view -->
+    <string name="view_main_tab_home">Home</string>
+    <string name="view_main_tab_explore">Explore</string>
+    <string name="view_main_tab_channels">Subscriptions</string>
+
+
+</resources>

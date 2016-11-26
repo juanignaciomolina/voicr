@@ -1,0 +1,16 @@
+<tabs>
+    <tab
+        id="@+id/vNavigationTabHome"
+        icon="@drawable/ic_home"
+        title="@string/view_main_tab_home" />
+
+    <tab
+        id="@+id/vNavigationTabExplore"
+        icon="@drawable/ic_explore"
+        title="@string/view_main_tab_explore" />
+
+    <tab
+        id="@+id/vNavigationTabSubscriptions"
+        icon="@drawable/ic_channels"
+        title="@string/view_main_tab_channels" />
+</tabs>

@@ -69,6 +69,7 @@ dependencies {
     // -> UI components
     compile 'com.github.bhargavms:DotLoader:1.0.0'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.6.1'
+    compile 'com.roughike:bottom-bar:2.0.2'
 
     // Testing dependencies
     testCompile 'junit:junit:4.12'
