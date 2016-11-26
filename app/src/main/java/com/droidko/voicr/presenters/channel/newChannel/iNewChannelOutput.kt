@@ -1,4 +1,4 @@
-package com.droidko.voicr.presenters.newChannel
+package com.droidko.voicr.presenters.channel.newChannel
 
 import com.droidko.voicr.emvp.iEmvpOutput
 

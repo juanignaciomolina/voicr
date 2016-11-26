@@ -15,15 +15,14 @@ import java.util.*
 
 class AudioPostPostRecordPresenter(val output: iAudioPostRecordOutput?): iAudioPostRecordInput {
 
-    val TEMPORARY_FILES_PATH = "pending-uploads"
-    val AUDIO_SAMPLING_RATE = 44100
-    val AUDIO_ENCODING_BITRATE = 96000
+    private val TEMPORARY_FILES_PATH = "pending-uploads"
+    private val AUDIO_SAMPLING_RATE = 44100
+    private val AUDIO_ENCODING_BITRATE = 96000
 
-    var recorder: MediaRecorder? = null
-    var isRecording: Boolean = false
-    var pathToRecordedAudio: String? = null
+    private var recorder: MediaRecorder? = null
+    private var isRecording: Boolean = false
+    private var pathToRecordedAudio: String? = null
     var channelId: String? = null
-
 
     override fun startRecording() {
 

@@ -3,8 +3,8 @@ package com.droidko.voicr.views.newChannel
 import android.os.Bundle
 import android.view.View
 import com.droidko.voicr.R
-import com.droidko.voicr.presenters.newChannel.NewChannelPresenter
-import com.droidko.voicr.presenters.newChannel.iNewChannelOutput
+import com.droidko.voicr.presenters.channel.newChannel.NewChannelPresenter
+import com.droidko.voicr.presenters.channel.newChannel.iNewChannelOutput
 import com.droidko.voicr.views.BaseFragment
 import kotlinx.android.synthetic.main.fragment_new_channel.*
 import org.jetbrains.anko.toast

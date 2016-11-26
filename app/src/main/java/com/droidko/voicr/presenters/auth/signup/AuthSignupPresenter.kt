@@ -5,16 +5,16 @@ import com.droidko.voicr.models.UserProfile
 import com.droidko.voicr.models.UserSubs
 import com.droidko.voicr.presenters.auth.AuthPresenter
 import com.droidko.voicr.presenters.auth.iAuthOutput
-import com.droidko.voicr.presenters.editUserProfile.EditUserProfilePresenter
-import com.droidko.voicr.presenters.editUserProfile.iEditUserProfileOutput
+import com.droidko.voicr.presenters.user.editProfile.EditUserProfilePresenter
+import com.droidko.voicr.presenters.user.editProfile.iEditUserProfileOutput
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import org.jetbrains.anko.error
 
 class AuthSignupPresenter(val output: iAuthSignupOutput): iEmvpPresenter, iAuthSignupInput, iEditUserProfileOutput {
 
-    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    val editUserProfilePresenter by lazy { EditUserProfilePresenter(this) }
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val editUserProfilePresenter by lazy { EditUserProfilePresenter(this) }
 
     // ** SIGNUP **
     override fun doSignUp(email: String, password: String, confirmPassword: String) {

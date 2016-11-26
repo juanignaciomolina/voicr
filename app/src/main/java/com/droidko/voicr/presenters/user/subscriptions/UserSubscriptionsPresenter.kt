@@ -1,48 +1,34 @@
-package com.droidko.voicr.presenters.editUserProfile
+package com.droidko.voicr.presenters.user.subscriptions
 
 import com.droidko.voicr.emvp.iEmvpPresenter
-import com.droidko.voicr.firebase.DbAccess
 import com.droidko.voicr.models.ChannelProfile
-import com.droidko.voicr.models.UserProfile
 import com.droidko.voicr.models.UserSubs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import org.jetbrains.anko.error
-import java.util.*
 
-class EditUserProfilePresenter(val output: iEditUserProfileOutput): iEmvpPresenter, iEditUserProfileInput {
+class UserSubscriptionsPresenter(val output: iUserSubscriptionsOutput): iEmvpPresenter, iUserSubscriptionsInput {
 
-    val database = FirebaseDatabase.getInstance()
-    val uid = FirebaseAuth.getInstance().currentUser!!.uid
+    private val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
-    override fun newUser() {
-        val newUserProfile = UserProfile(uid) // New empty user profile
-        val newUserSubs = UserSubs() // New empty user subscriptions
+    override fun getUserSubscriptions(userId: String) {
+        dbAccess()
+                .userSubscriptions(userId)
+                .addListenerForSingleValueEvent( object : ValueEventListener {
+                    override fun onCancelled(error: DatabaseError) {
+                        output.onUserSubsGetFailure(error.toException())
+                    }
 
-        // Prepare an atomic multi-reference update
-        val updates: HashMap<String, Any> = HashMap()
-        updates.put("${DbAccess.PATH_USER_PROFILE}/$uid/", newUserProfile.toFbMap())
-        updates.put("${DbAccess.PATH_USER_SUBSCRIPTIONS}/$uid/", newUserSubs.toFbMap())
-
-        database.reference
-                .updateChildren(updates)
-                .addOnSuccessListener { output.onUserCreationSuccessful(newUserProfile, newUserSubs) }
-                .addOnFailureListener { exception -> output.onUserCreationFailure(exception) }
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        output.onUserSubsGetSuccessful(dataSnapshot.getValue(UserSubs::class.java))
+                    }
+                })
     }
 
-    private fun updateUserProfile(userProfile: UserProfile) {
-        //Update user's profile on the server
-        dbAccess()
-                .userProfile()
-                .setValue(userProfile)
-                .addOnSuccessListener { output.onUserProfileModificationSuccessful(userProfile) }
-                .addOnFailureListener { exception ->
-                    error { "An error occurred while updating the user's profile: $exception" }
-                    output.onUserCreationFailure(exception)
-                }
+    override fun getUserSubscriptions() {
+        getUserSubscriptions(uid)
     }
 
     private fun updateUserSubs(userSubs: UserSubs) {
@@ -75,7 +61,7 @@ class EditUserProfilePresenter(val output: iEditUserProfileOutput): iEmvpPresent
 
                     override fun onCancelled(databaseError: DatabaseError) {
                         error { "An error occurred while retrieving the user's profile: $databaseError" }
-                        output.onUserProfileModificationFailure(databaseError.toException())
+                        output.onUserSubsModificationFailure(databaseError.toException())
                     }
                 })
     }
@@ -98,17 +84,9 @@ class EditUserProfilePresenter(val output: iEditUserProfileOutput): iEmvpPresent
 
                     override fun onCancelled(databaseError: DatabaseError) {
                         error { "An error occurred while retrieving the user's profile: $databaseError" }
-                        output.onUserProfileModificationFailure(databaseError.toException())
+                        output.onUserSubsModificationFailure(databaseError.toException())
                     }
                 })
-    }
-
-    override fun editAvatarUrl(avatarUrl: String) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun editUsername(username: String) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

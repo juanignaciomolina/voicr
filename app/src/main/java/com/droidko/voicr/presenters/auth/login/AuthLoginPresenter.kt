@@ -10,7 +10,7 @@ import org.jetbrains.anko.error
 
 class AuthLoginPresenter(val output: iAuthLoginOutput): iEmvpPresenter, iAuthLoginInput {
 
-    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     // ** LOGIN **
     override fun doLogin(email: String, password: String) {

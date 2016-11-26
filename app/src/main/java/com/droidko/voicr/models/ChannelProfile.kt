@@ -6,7 +6,7 @@ import java.util.*
 // TODO Reference: https://firebase.google.com/docs/database/android/offline-capabilities
 
 data class ChannelProfile(
-        val cid: String,
+        val cid: String = "",
         val name: String = "",
         val membersCount: Int = 0,
         val avatar: String = "",

@@ -10,9 +10,9 @@ import com.droidko.voicr.emvp.iEmvpPresenter
 
 class AudioPostReceiverPresenter(val output: iAudioPostReceiverOutput): iEmvpPresenter, iAudioPostReceiverInput {
 
-    var listeningChannel: String? = null
-    var receiverService: AudioPostReceiverService? = null
-    var service: AudioPostReceiverService? = null
+    private var listeningChannel: String? = null
+    private var receiverService: AudioPostReceiverService? = null
+    private var service: AudioPostReceiverService? = null
 
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, binder: IBinder) {

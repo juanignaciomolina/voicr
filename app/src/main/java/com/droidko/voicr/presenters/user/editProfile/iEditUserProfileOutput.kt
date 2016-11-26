@@ -1,4 +1,4 @@
-package com.droidko.voicr.presenters.editUserProfile
+package com.droidko.voicr.presenters.user.editProfile
 
 import com.droidko.voicr.emvp.iEmvpOutput
 import com.droidko.voicr.models.UserProfile
@@ -36,22 +36,6 @@ interface iEditUserProfileOutput: iEmvpOutput {
      * @param exception: An [Exception] with the modification error
      */
     fun onUserProfileModificationFailure(exception: Exception) {
-        // Default empty implementation, override if needed
-    }
-
-    /**
-     * Callback triggered after a successful user's server side subscriptions modification
-     * @param userSubs: An updated [UserSubs]
-     */
-    fun onUserSubsModificationSuccessful(userSubs: UserSubs) {
-        // Default empty implementation, override if needed
-    }
-
-    /**
-     * Callback triggered after an unsuccessful user's server side subscriptions modification
-     * @param exception: An [Exception] with the modification error
-     */
-    fun onUserSubsModificationFailure(exception: Exception) {
         // Default empty implementation, override if needed
     }
 }

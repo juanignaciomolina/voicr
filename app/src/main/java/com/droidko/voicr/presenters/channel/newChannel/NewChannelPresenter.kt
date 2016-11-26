@@ -1,4 +1,4 @@
-package com.droidko.voicr.presenters.newChannel
+package com.droidko.voicr.presenters.channel.newChannel
 
 import android.util.Log
 import com.droidko.voicr.emvp.iEmvpPresenter
@@ -17,8 +17,8 @@ import java.util.*
 
 class NewChannelPresenter(val output: iNewChannelOutput): iEmvpPresenter, iNewChannelInput {
 
-    val database = FirebaseDatabase.getInstance()
-    val uid = FirebaseAuth.getInstance().currentUser!!.uid
+    private val database = FirebaseDatabase.getInstance()
+    private val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
     override fun createChannel(channelName: String) {
 
