@@ -1,4 +1,4 @@
-package com.droidko.voicr.views.home
+package com.droidko.voicr.views.main.home
 
 import android.support.v4.app.Fragment
 import com.droidko.voicr.views.BaseActivity

@@ -1,12 +1,12 @@
-package com.droidko.voicr.views.home
+package com.droidko.voicr.views.main
 
 import android.support.v4.app.Fragment
 import com.droidko.voicr.views.BaseActivity
 
-class HomeActivity: BaseActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onFragmentRequested(): Fragment {
-        return HomeFragment.newInstance()
+        return MainFragment.newInstance()
     }
 
 }

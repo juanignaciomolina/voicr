@@ -1,4 +1,4 @@
-package com.droidko.voicr.views.home
+package com.droidko.voicr.views.main.channels
 
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -8,7 +8,7 @@ import com.droidko.voicr.models.ChannelProfile
 import com.facebook.drawee.view.SimpleDraweeView
 
 
-class HomeChannelsAdapter(dataset : List<ChannelProfile>) :
+class MainChannelsAdapter(dataset : List<ChannelProfile>) :
         BaseQuickAdapter<ChannelProfile, BaseViewHolder>(R.layout.item_home_channel, dataset) {
 
     override fun convert(viewHolder: BaseViewHolder, item: ChannelProfile) {

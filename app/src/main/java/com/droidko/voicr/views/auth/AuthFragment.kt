@@ -9,7 +9,7 @@ import com.droidko.voicr.presenters.auth.login.iAuthLoginOutput
 import com.droidko.voicr.presenters.auth.signup.AuthSignupPresenter
 import com.droidko.voicr.presenters.auth.signup.iAuthSignupOutput
 import com.droidko.voicr.views.BaseFragment
-import com.droidko.voicr.views.home.HomeActivity
+import com.droidko.voicr.views.main.MainActivity
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.jetbrains.anko.startActivity
@@ -65,7 +65,7 @@ class AuthFragment : BaseFragment(), iAuthLoginOutput, iAuthSignupOutput {
 
     fun greetUser(email: String) {
         toast("Welcome $email")
-        context.startActivity<HomeActivity>()
+        context.startActivity<MainActivity>()
     }
 
     fun handleError(error: iAuthOutput.AuthError) {

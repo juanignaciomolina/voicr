@@ -1,4 +1,4 @@
-package com.droidko.voicr.views.home
+package com.droidko.voicr.views.main.channels
 
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -12,33 +12,32 @@ import com.droidko.voicr.presenters.user.subscriptions.UserSubscriptionsPresente
 import com.droidko.voicr.presenters.user.subscriptions.iUserSubscriptionsOutput
 import com.droidko.voicr.views.BaseFragment
 import com.droidko.voicr.views.channel.ChannelFragment
-import com.droidko.voicr.views.newChannel.NewChannelActivity
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.droidko.voicr.views.main.home.ChannelActivity
+import kotlinx.android.synthetic.main.fragment_main_channels.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import java.util.*
 
 
-class HomeFragment: BaseFragment(), iUserSubscriptionsOutput {
+class MainChannelsFragment : BaseFragment(), iUserSubscriptionsOutput {
 
     companion object {
-        fun newInstance(): HomeFragment {
-            val f = HomeFragment()
+        fun newInstance(): MainChannelsFragment {
+            val f = MainChannelsFragment()
             val args = Bundle()
             f.arguments = args
             return f
         }
     }
 
-
     // Vars
     val channelsDataset = ArrayList<ChannelProfile>()
-    val channelsAdapter = HomeChannelsAdapter(channelsDataset)
+    val channelsAdapter = MainChannelsAdapter(channelsDataset)
     val subscriptionsPresenter by lazy { UserSubscriptionsPresenter(this) }
 
     //region Lifecycle
     override fun onLayoutRequested(): Int {
-        return R.layout.fragment_home
+        return R.layout.fragment_main_channels
     }
 
     override fun onInitialize(rootView: View) {
@@ -52,9 +51,6 @@ class HomeFragment: BaseFragment(), iUserSubscriptionsOutput {
     }
 
     override fun onSetListeners(rootView: View) {
-        vNewChannelButton.setOnClickListener {
-            activity.startActivity<NewChannelActivity>()
-        }
         vChannelsRecycler.addOnItemTouchListener(object : OnItemClickListener() {
             override fun SimpleOnItemClick(adapter: BaseQuickAdapter<*, *>?, view: View, position: Int) {
                 activity.startActivity<ChannelActivity>(

@@ -3,7 +3,7 @@ package com.droidko.voicr.views
 import android.app.Activity
 import android.os.Bundle
 import com.droidko.voicr.views.auth.AuthActivity
-import com.droidko.voicr.views.home.HomeActivity
+import com.droidko.voicr.views.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import org.jetbrains.anko.startActivity
 
@@ -20,7 +20,7 @@ class RouterActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (FirebaseAuth.getInstance().currentUser != null)
-            startActivity<HomeActivity>()
+            startActivity<MainActivity>()
         else
             startActivity<AuthActivity>()
         finish()

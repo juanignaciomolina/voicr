@@ -39,13 +39,13 @@
 
         <!-- Home -->
         <activity
-            android:name=".views.home.HomeActivity"
+            android:name="com.droidko.voicr.views.main.MainActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"/>
 
         <!-- Channel -->
         <activity
-            android:name=".views.home.ChannelActivity"
+            android:name="com.droidko.voicr.views.main.home.ChannelActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"/>
 

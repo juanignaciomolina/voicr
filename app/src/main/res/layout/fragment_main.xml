@@ -13,9 +13,9 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:gravity="end"
-        android:title="Home"
+        android:elevation="@dimen/spacing_small"
         >
-
+        s
         <ImageView
             android:id="@+id/vNewChannelButton"
             android:layout_width="wrap_content"
@@ -25,17 +25,18 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/vChannelsRecycler"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vFragmentsViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         />
 
     <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
+        android:id="@+id/vNavigationBottomBar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:bb_tabXmlResource="@layout/navigaton_bottom_bar" />
+        app:bb_tabXmlResource="@layout/navigaton_bottom_bar"
+        app:bb_showShadow="true"/>
 
 </LinearLayout>
