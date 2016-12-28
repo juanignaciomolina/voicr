@@ -4,7 +4,7 @@
     <!-- Main view -->
     <string name="view_main_tab_home">Home</string>
     <string name="view_main_tab_explore">Explore</string>
-    <string name="view_main_tab_channels">Subscriptions</string>
+    <string name="view_main_tab_channels">My Channels</string>
 
 
 </resources>

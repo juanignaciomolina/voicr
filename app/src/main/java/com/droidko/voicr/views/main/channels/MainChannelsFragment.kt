@@ -6,8 +6,8 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.droidko.voicr.R
-import com.droidko.voicr.models.ChannelProfile
-import com.droidko.voicr.models.UserSubs
+import com.droidko.voicr.models.channel.ChannelProfile
+import com.droidko.voicr.models.user.UserSubs
 import com.droidko.voicr.presenters.user.subscriptions.UserSubscriptionsPresenter
 import com.droidko.voicr.presenters.user.subscriptions.iUserSubscriptionsOutput
 import com.droidko.voicr.views.BaseFragment
@@ -54,7 +54,7 @@ class MainChannelsFragment : BaseFragment(), iUserSubscriptionsOutput {
         vChannelsRecycler.addOnItemTouchListener(object : OnItemClickListener() {
             override fun SimpleOnItemClick(adapter: BaseQuickAdapter<*, *>?, view: View, position: Int) {
                 activity.startActivity<ChannelActivity>(
-                        ChannelFragment.EXTRA_CHANNEL_ID to channelsDataset.get(position).cid
+                        ChannelFragment.EXTRA_CHANNEL_PROFILE to channelsDataset.get(position).toFbMap()
                 )
             }
         })
@@ -63,6 +63,8 @@ class MainChannelsFragment : BaseFragment(), iUserSubscriptionsOutput {
 
     //region Subscriptions
     override fun onUserSubsGetSuccessful(userSubs: UserSubs) {
+        channelsDataset.clear() // If not cleared, this variable will contain garbage when the
+                                // fragment manager recreates the fragment
         channelsDataset.addAll(userSubs.subscriptions.values)
         channelsAdapter.notifyDataSetChanged()
     }

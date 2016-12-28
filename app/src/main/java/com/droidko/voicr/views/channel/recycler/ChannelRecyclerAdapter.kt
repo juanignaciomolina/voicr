@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.droidko.voicr.R
-import com.droidko.voicr.models.AudioPost
+import com.droidko.voicr.models.post.AudioPost
 import java.util.*
 
 class ChannelRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

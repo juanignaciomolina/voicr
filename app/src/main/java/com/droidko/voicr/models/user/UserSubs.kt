@@ -1,5 +1,6 @@
-package com.droidko.voicr.models
+package com.droidko.voicr.models.user
 
+import com.droidko.voicr.models.channel.ChannelProfile
 import java.util.*
 
 data class UserSubs(

@@ -4,7 +4,7 @@ import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.droidko.voicr.R
-import com.droidko.voicr.models.ChannelProfile
+import com.droidko.voicr.models.channel.ChannelProfile
 import com.facebook.drawee.view.SimpleDraweeView
 
 

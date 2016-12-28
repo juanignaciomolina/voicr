@@ -1,8 +1,8 @@
 package com.droidko.voicr.presenters.auth.signup
 
 import com.droidko.voicr.emvp.iEmvpPresenter
-import com.droidko.voicr.models.UserProfile
-import com.droidko.voicr.models.UserSubs
+import com.droidko.voicr.models.user.UserProfile
+import com.droidko.voicr.models.user.UserSubs
 import com.droidko.voicr.presenters.auth.AuthPresenter
 import com.droidko.voicr.presenters.auth.iAuthOutput
 import com.droidko.voicr.presenters.user.editProfile.EditUserProfilePresenter

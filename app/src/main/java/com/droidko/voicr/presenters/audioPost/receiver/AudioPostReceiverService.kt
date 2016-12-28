@@ -7,7 +7,7 @@ import android.media.MediaPlayer
 import android.os.Binder
 import android.os.IBinder
 import com.droidko.voicr.firebase.DbAccess
-import com.droidko.voicr.models.AudioPost
+import com.droidko.voicr.models.post.AudioPost
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

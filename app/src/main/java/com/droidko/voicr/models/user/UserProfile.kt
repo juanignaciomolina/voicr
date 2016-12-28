@@ -1,4 +1,4 @@
-package com.droidko.voicr.models
+package com.droidko.voicr.models.user
 
 import java.util.*
 
@@ -10,7 +10,7 @@ data class UserProfile(
         val timestamp: Long = System.currentTimeMillis() / 1000L) {
 
     fun toFbMap() : HashMap<String, Any> {
-        var mappedUser: HashMap<String, Any> = HashMap()
+        val mappedUser: HashMap<String, Any> = HashMap()
         mappedUser.put("uid", uid)
         mappedUser.put("name", name)
         mappedUser.put("avatarUrl", avatarUrl)

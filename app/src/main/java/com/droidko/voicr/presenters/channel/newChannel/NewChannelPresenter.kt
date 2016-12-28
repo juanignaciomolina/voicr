@@ -3,9 +3,9 @@ package com.droidko.voicr.presenters.channel.newChannel
 import android.util.Log
 import com.droidko.voicr.emvp.iEmvpPresenter
 import com.droidko.voicr.firebase.DbAccess
-import com.droidko.voicr.models.ChannelProfile
-import com.droidko.voicr.models.ChannelSubs
-import com.droidko.voicr.models.UserSubs
+import com.droidko.voicr.models.channel.ChannelProfile
+import com.droidko.voicr.models.channel.ChannelSubs
+import com.droidko.voicr.models.user.UserSubs
 import com.droidko.voicr.presenters.uploads.FileUploadService
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot

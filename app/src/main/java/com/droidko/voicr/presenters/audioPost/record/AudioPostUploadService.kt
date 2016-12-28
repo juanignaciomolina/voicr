@@ -4,7 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import com.droidko.voicr.firebase.DbAccess
-import com.droidko.voicr.models.AudioPost
+import com.droidko.voicr.models.post.AudioPost
 import com.droidko.voicr.presenters.uploads.FileUploadService
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -43,12 +43,13 @@ class AudioPostUploadService: FileUploadService() {
     private fun makeAudioPost(audioUrl: Uri) {
 
         val pid = getNewPostId()
-        val audioPost = AudioPost(audioUrl.toString())
+        val mappedAudioPost = AudioPost(audioUrl.toString()).toFbMap()
 
         // Prepare an atomic multi-reference update
         val updates: HashMap<String, Any> = HashMap()
-        updates.put("/${DbAccess.PATH_CHANNEL_POSTS}/$cid/$pid/", audioPost.toFbMap())
-        updates.put("/${DbAccess.PATH_USER_POSTS}/$uid/$pid/", audioPost.toFbMap())
+        updates.put("/${DbAccess.PATH_CHANNEL_POSTS}/$cid/$pid/", mappedAudioPost)
+        updates.put("/${DbAccess.PATH_CHANNEL_PROFILE}/$cid/lastPost/", mappedAudioPost)
+        updates.put("/${DbAccess.PATH_USER_POSTS}/$uid/$pid/", mappedAudioPost)
 
         database.reference
                 .updateChildren(updates)

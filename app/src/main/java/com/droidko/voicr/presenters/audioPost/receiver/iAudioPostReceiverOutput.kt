@@ -1,7 +1,7 @@
 package com.droidko.voicr.presenters.audioPost.receiver
 
 import com.droidko.voicr.emvp.iEmvpOutput
-import com.droidko.voicr.models.AudioPost
+import com.droidko.voicr.models.post.AudioPost
 
 interface iAudioPostReceiverOutput: iEmvpOutput {
 

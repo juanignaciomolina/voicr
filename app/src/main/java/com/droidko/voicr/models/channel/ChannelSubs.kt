@@ -1,4 +1,4 @@
-package com.droidko.voicr.models
+package com.droidko.voicr.models.channel
 
 import java.util.*
 

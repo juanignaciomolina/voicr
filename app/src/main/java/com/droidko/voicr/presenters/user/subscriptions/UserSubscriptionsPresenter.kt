@@ -1,17 +1,33 @@
 package com.droidko.voicr.presenters.user.subscriptions
 
 import com.droidko.voicr.emvp.iEmvpPresenter
-import com.droidko.voicr.models.ChannelProfile
-import com.droidko.voicr.models.UserSubs
+import com.droidko.voicr.models.channel.ChannelProfile
+import com.droidko.voicr.models.user.UserSubs
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import org.jetbrains.anko.error
+import java.util.*
 
-class UserSubscriptionsPresenter(val output: iUserSubscriptionsOutput): iEmvpPresenter, iUserSubscriptionsInput {
+open class UserSubscriptionsPresenter(val output: iUserSubscriptionsOutput): iEmvpPresenter, iUserSubscriptionsInput {
+
+    private val activeSubscriptionsListeners: ArrayList<ChildEventListener> = ArrayList()
 
     private val uid = FirebaseAuth.getInstance().currentUser!!.uid
+
+    override fun startListeningForUserSubscriptions(userId: String, childEventListener: ChildEventListener) {
+        dbAccess()
+                .userSubscriptions(userId)
+                .addChildEventListener(childEventListener)
+
+        activeSubscriptionsListeners.add(childEventListener)
+    }
+
+    override fun startListeningForUserSubscriptions(childEventListener: ChildEventListener) {
+        startListeningForUserSubscriptions(uid, childEventListener)
+    }
 
     override fun getUserSubscriptions(userId: String) {
         dbAccess()

@@ -2,8 +2,8 @@ package com.droidko.voicr.presenters.user.editProfile
 
 import com.droidko.voicr.emvp.iEmvpPresenter
 import com.droidko.voicr.firebase.DbAccess
-import com.droidko.voicr.models.UserProfile
-import com.droidko.voicr.models.UserSubs
+import com.droidko.voicr.models.user.UserProfile
+import com.droidko.voicr.models.user.UserSubs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import org.jetbrains.anko.error

@@ -1,7 +1,7 @@
 package com.droidko.voicr.presenters.user.subscriptions
 
 import com.droidko.voicr.emvp.iEmvpOutput
-import com.droidko.voicr.models.UserSubs
+import com.droidko.voicr.models.user.UserSubs
 
 interface iUserSubscriptionsOutput : iEmvpOutput {
 

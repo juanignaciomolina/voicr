@@ -7,7 +7,7 @@ import com.droidko.voicr.views.channel.ChannelFragment
 class ChannelActivity: BaseActivity() {
 
     override fun onFragmentRequested(): Fragment {
-        return ChannelFragment.newInstance(intent.extras.getString(ChannelFragment.EXTRA_CHANNEL_ID))
+        return ChannelFragment.newInstance(intent.extras.getSerializable(ChannelFragment.EXTRA_CHANNEL_PROFILE))
     }
 
 }

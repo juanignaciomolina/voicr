@@ -1,8 +1,8 @@
 package com.droidko.voicr.presenters.user.editProfile
 
 import com.droidko.voicr.emvp.iEmvpOutput
-import com.droidko.voicr.models.UserProfile
-import com.droidko.voicr.models.UserSubs
+import com.droidko.voicr.models.user.UserProfile
+import com.droidko.voicr.models.user.UserSubs
 
 interface iEditUserProfileOutput: iEmvpOutput {
 

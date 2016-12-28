@@ -7,7 +7,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewAnimationUtils
 import com.droidko.voicr.R
-import com.droidko.voicr.models.AudioPost
+import com.droidko.voicr.models.post.AudioPost
 import com.droidko.voicr.presenters.audioPost.receiver.AudioPostReceiverPresenter
 import com.droidko.voicr.presenters.audioPost.receiver.iAudioPostReceiverOutput
 import com.droidko.voicr.presenters.audioPost.record.AudioPostPostRecordPresenter
@@ -17,18 +17,20 @@ import com.droidko.voicr.views.channel.recycler.ChannelRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_channel.*
 import org.jetbrains.anko.error
 import org.jetbrains.anko.info
+import java.io.Serializable
+import java.util.*
 
 class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceiverOutput {
 
     companion object {
-        val EXTRA_CHANNEL_ID = "extraChannelId"
+        val EXTRA_CHANNEL_PROFILE = "extraChannelProfile"
         private val ANIM_CIRCULAR_REVEAL_IN_DURATION = 200L
         private val ANIM_CIRCULAR_REVEAL_OUT_DURATION = 400L
 
-        fun newInstance(channelId: String): ChannelFragment {
+        fun newInstance(channelProfile: Serializable): ChannelFragment {
             val f = ChannelFragment()
             val args = Bundle()
-            args.putString(EXTRA_CHANNEL_ID, channelId)
+            args.putSerializable(EXTRA_CHANNEL_PROFILE, channelProfile)
             f.arguments = args
             return f
         }
@@ -38,7 +40,7 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
     val audioReceiverPresenter by lazy { AudioPostReceiverPresenter(this) }
     val recyclerAdapter = ChannelRecyclerAdapter()
 
-    var audioChannel = ""
+    var channelProfile = HashMap<String, String>()
 
     //region Lifecycle
     override fun onLayoutRequested(): Int {
@@ -46,18 +48,18 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
     }
 
     override fun handleArguments(arguments: Bundle): Boolean {
-        if (arguments.containsKey(EXTRA_CHANNEL_ID)) {
-            audioChannel = arguments.getString(EXTRA_CHANNEL_ID)
+        if (arguments.containsKey(EXTRA_CHANNEL_PROFILE)) {
+            channelProfile = arguments.getSerializable(EXTRA_CHANNEL_PROFILE) as HashMap<String, String>
             return true
         } else {
-            error { "A channel id is necessary. Remember to provide one as an intent extra with " +
-                    "EXTRA_CHANNEL_ID as a key" }
+            error { "A channel profile is necessary. Remember to provide one as an intent extra with " +
+                    "EXTRA_CHANNEL_PROFILE as a key" }
             return false
         }
     }
 
     override fun onInitialize(rootView: View) {
-        audioRecordPresenter.channelId = audioChannel
+        audioRecordPresenter.channelId = channelProfile["cid"]
 
         with (vMessagesRecycler) {
             setHasFixedSize(true)
@@ -67,7 +69,7 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
     }
 
     override fun onPopulateUi(rootView: View) {
-        vChannelTitle.text = audioChannel
+        vChannelTitle.text = channelProfile["name"]
         vRecordingMicReveal.visibility = View.INVISIBLE
     }
 
@@ -91,12 +93,12 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
 
         recyclerAdapter.clickListener = object : ChannelRecyclerAdapter.ClickListener {
             override fun onPlayClicked(post: AudioPost) {
-                info { "Playing audio of user ${post.uid}" }
+                info { "Playing audio of user ${post.user.uid}" }
                 audioReceiverPresenter.playAudio(post.downloadUrl)
             }
 
             override fun onAvatarClicked(post: AudioPost) {
-                info { "Avatar clicked of user ${post.uid}" }
+                info { "Avatar clicked of user ${post.user.uid}" }
             }
 
         }
@@ -107,11 +109,11 @@ class ChannelFragment: BaseFragment(), iAudioPostRecordOutput, iAudioPostReceive
         // Attention: For some reason, onResume() was being called multiple times, causing duplicated
         // listeners. This may be related to the library being used for runtime-permissions, since
         // it uses a separate Activity for handling results
-        audioReceiverPresenter.startListeningToChannel(audioChannel)
+        audioReceiverPresenter.startListeningToChannel(channelProfile["cid"]!!)
     }
 
     override fun onStop() {
-        audioReceiverPresenter.stopListeningFromChannel(audioChannel)
+        audioReceiverPresenter.stopListeningFromChannel(channelProfile["cid"]!!)
         super.onStop()
     }
     //endregion
